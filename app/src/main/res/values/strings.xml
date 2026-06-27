@@ -15,6 +15,7 @@
 
     <!-- Pantalla Mis materias -->
     <string name="titulo_materia">Mis materias</string>
+    <string name="volver">Volver</string>
 
     <!-- Pantalla Grupos -->
     <string name="titulo_grupos">Grupos de trabajo</string>
@@ -40,4 +41,8 @@
     <string name="prog_info">Comisión A - Lunes 18hs</string>
     <string name="materia_ii">Base de Datos</string>
     <string name="db_info">Comisión B - Miércoles 20hs</string>
+    <string name="profesor_1">Sergio Daniel Medina</string>
+    <string name="horario_1">Miércoles de 19:00 a 20:50</string>
+    <string name="horario_2">Miércoles de 19:00 a 20:50</string>
+    <string name="profesor_2">Pablo Medina</string>
 </resources>

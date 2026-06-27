@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -6,30 +7,57 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <TextView
-        android:id="@+id/txtTitulo"
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="@string/titulo_materia"
-        android:textColor="@color/textWhite"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_header"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_back"
+            app:tint="@color/textWhite"
+            android:contentDescription="@string/volver"/>
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mis_materias"
+            android:textColor="@color/textWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/btnAdd"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_add"
+            app:tint="@color/textWhite"
+            android:contentDescription="@string/agregar_materia"/>
+
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/scrollMaterias"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/margin_screen"
-        android:layout_marginEnd="@dimen/margin_screen"
-        android:layout_marginBottom="@dimen/margin_between_cards"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
-        app:layout_constraintBottom_toTopOf="@id/btnAgregar"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -43,69 +71,115 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_between_cards"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_card"
-                android:orientation="vertical"
-                android:padding="@dimen/padding_card">
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
 
-                <TextView
-                    android:layout_width="131dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/materia_i"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_icon_purple"
+                    android:gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        app:srcCompat="@drawable/ic_phone"
+                        app:tint="@color/textWhite"
+                        android:contentDescription="@null"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/prog_info"
-                    android:textColor="@color/colorSuccess"
-                    android:textSize="13sp" />
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/materia_i"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/horario_1"
+                        android:textSize="13sp"
+                        android:textColor="@color/textSecondary"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profesor_1"
+                        android:textSize="13sp"
+                        android:textColor="@color/textSecondary"/>
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_between_cards"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_card"
-                android:orientation="vertical"
-                android:padding="@dimen/padding_card">
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
 
-                <TextView
-                    android:layout_width="131dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/materia_ii"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/textPrimary"/>
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_icon_orange"
+                    android:gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        app:srcCompat="@drawable/ic_database"
+                        app:tint="@color/textWhite"
+                        android:contentDescription="@null"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/db_info"
-                    android:textSize="13sp"
-                    android:textColor="@color/colorSuccess"/>
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/materia_ii"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/horario_2"
+                        android:textSize="13sp"
+                        android:textColor="@color/textSecondary"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profesor_2"
+                        android:textSize="13sp"
+                        android:textColor="@color/textSecondary"/>
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/btnAgregar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_screen"
-        android:layout_marginEnd="@dimen/margin_screen"
-        android:layout_marginBottom="@dimen/margin_button_bottom"
-        android:background="@drawable/bg_button"
-        android:text="@string/agregar_materia"
-        android:textColor="@color/colorTextButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
