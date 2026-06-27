@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +21,10 @@ public class GruposActivity extends AppCompatActivity {
         Button btnCrearGrupo = findViewById(R.id.btnCrearGrupo);
         contenedorListaGrupos = findViewById(R.id.contenedorListaGrupos);
 
-        btnCrearGrupo.setOnClickListener(v -> crearGrupoDinamico());
+        btnCrearGrupo.setOnClickListener(v -> {
+            Intent intent = new Intent(GruposActivity.this, CrearGrupoActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void crearGrupoDinamico() {
