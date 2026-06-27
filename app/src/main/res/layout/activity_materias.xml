@@ -23,12 +23,14 @@
             android:layout_marginStart="16dp"
             android:layout_centerVertical="true"
             app:srcCompat="@drawable/ic_back"
-            app:tint="@color/textWhite"/>
+            app:tint="@color/textWhite"
+            android:contentDescription="@string/volver"/>
 
         <TextView
+            android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mis materias"
+            android:text="@string/mis_materias"
             android:textColor="@color/textWhite"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -42,7 +44,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             app:srcCompat="@drawable/ic_add"
-            app:tint="@color/textWhite"/>
+            app:tint="@color/textWhite"
+            android:contentDescription="@string/agregar_materia"/>
 
     </RelativeLayout>
 
@@ -84,7 +87,8 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         app:srcCompat="@drawable/ic_phone"
-                        app:tint="@color/textWhite"/>
+                        app:tint="@color/textWhite"
+                        android:contentDescription="@null"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -95,18 +99,24 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:text="Aplicaciones Móviles - ACN4BV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/materia_i"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/textPrimary"/>
 
                     <TextView
-                        android:text="Miércoles de 19:00 a 20:50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/horario_1"
                         android:textSize="13sp"
                         android:textColor="@color/textSecondary"/>
 
                     <TextView
-                        android:text="Doc. Sergio Daniel Medina"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profesor_1"
                         android:textSize="13sp"
                         android:textColor="@color/textSecondary"/>
                 </LinearLayout>
@@ -132,7 +142,8 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         app:srcCompat="@drawable/ic_database"
-                        app:tint="@color/textWhite"/>
+                        app:tint="@color/textWhite"
+                        android:contentDescription="@null"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -143,18 +154,24 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:text="PP: Base de Datos III"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/materia_ii"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/textPrimary"/>
 
                     <TextView
-                        android:text="ACN4BV - Turno noche"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/horario_2"
                         android:textSize="13sp"
                         android:textColor="@color/textSecondary"/>
 
                     <TextView
-                        android:text="Doc. Gionnelly Vielza Durán"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profesor_2"
                         android:textSize="13sp"
                         android:textColor="@color/textSecondary"/>
                 </LinearLayout>
