@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,7 +33,7 @@ public class MateriasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_materias);
 
         listaMaterias = findViewById(R.id.layoutListaMaterias);
-        Button btnAgregar = findViewById(R.id.btnAgregar);
+        ImageView btnAgregar = findViewById(R.id.btnAdd);
 
 
         btnAgregar.setOnClickListener(v -> agregarMateria());
