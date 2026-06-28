@@ -1,5 +1,6 @@
 package com.example.app_campus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -39,7 +40,6 @@ public class MateriasActivity extends AppCompatActivity {
 
         lista = new ArrayList<>();
 
-        // Adapter
         adapter = new MateriaAdapter(this, lista, (materia, position) ->
                 Toast.makeText(this, materia.getNombre(), Toast.LENGTH_SHORT).show()
         );
@@ -47,14 +47,17 @@ public class MateriasActivity extends AppCompatActivity {
         listaMaterias.setLayoutManager(new LinearLayoutManager(this));
         listaMaterias.setAdapter(adapter);
 
+        //notificar correctamente al agregar iniciales
         agregarMateriaInicial();
         agregarMateriaInicial();
+        adapter.notifyDataSetChanged();
 
-        btnAgregar.setOnClickListener(v -> agregarMateria());
+        btnAgregar.setOnClickListener(v -> {
+            Intent intent = new Intent(MateriasActivity.this, AgregarMateriaActivity.class);
+            startActivityForResult(intent, 1);
+        });
 
-        // Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-
         bottomNavigationView.setSelectedItemId(R.id.nav_materias);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -62,25 +65,37 @@ public class MateriasActivity extends AppCompatActivity {
 
             if (id == R.id.nav_inicio) {
                 return true;
-
             } else if (id == R.id.nav_materias) {
                 return true;
-
             } else if (id == R.id.nav_grupos) {
                 return true;
-
             } else if (id == R.id.nav_calendario) {
                 return true;
-
             } else if (id == R.id.nav_chat) {
                 return true;
-
             } else if (id == R.id.nav_perfil) {
                 return true;
             }
 
             return false;
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+
+            String nombre = data.getStringExtra("nombre");
+            String horario = data.getStringExtra("horario");
+
+            //validación mínima para evitar nulls
+            if (nombre != null && horario != null) {
+                lista.add(new Materia(nombre, horario));
+                adapter.notifyItemInserted(lista.size() - 1);
+            }
+        }
     }
 
     private void agregarMateriaInicial() {
