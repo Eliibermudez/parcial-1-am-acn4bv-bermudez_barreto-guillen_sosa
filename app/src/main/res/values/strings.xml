@@ -71,4 +71,7 @@
     <string name="horario_form">Horario</string>
     <string name="docente_form">Docente</string>
     <string name="agregar_materia_bottom_form">Agregar materia</string>
+    <string name="unirme_grupo">Unirme al grupo</string>
+    <string name="salir_grupo">Salir del grupo</string>
+    <string name="grupo_estado_integrante">Integrante</string>
 </resources>

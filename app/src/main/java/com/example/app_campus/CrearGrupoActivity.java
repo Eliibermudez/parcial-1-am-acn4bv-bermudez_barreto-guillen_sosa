@@ -20,7 +20,6 @@ public class CrearGrupoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_grupo);
 
-
         EditText inputMateriaGrupo = findViewById(R.id.inputMateriaGrupo);
         EditText inputDescripcionGrupo = findViewById(R.id.inputDescripcionGrupo);
         EditText inputIntegrantesGrupo = findViewById(R.id.inputIntegrantesGrupo);
