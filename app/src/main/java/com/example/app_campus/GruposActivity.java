@@ -3,6 +3,7 @@ package com.example.app_campus;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,6 +17,7 @@ public class GruposActivity extends AppCompatActivity {
 
     private LinearLayout contenedorListaGrupos;
     private ActivityResultLauncher<Intent> crearGrupoLauncher;
+    private boolean mostrandoMisGrupos = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,34 @@ public class GruposActivity extends AppCompatActivity {
         Button btnCrearGrupo = findViewById(R.id.btnCrearGrupo);
         contenedorListaGrupos = findViewById(R.id.contenedorListaGrupos);
 
+        TextView tabBuscarGrupos = findViewById(R.id.tabBuscarGrupos);
+        TextView tabMisGrupos = findViewById(R.id.tabMisGrupos);
+
+        LinearLayout cardGrupoBaseDatos = findViewById(R.id.cardGrupoBaseDatos);
+        LinearLayout cardGrupoProgramacion = findViewById(R.id.cardGrupoProgramacion);
+
         TextView estadoGrupo1 = findViewById(R.id.estadoGrupo1);
         TextView btnUnirseGrupo1 = findViewById(R.id.btnUnirseGrupo1);
         TextView detalleGrupo1 = findViewById(R.id.detalleGrupo1);
 
-        configurarAccionGrupo(estadoGrupo1, btnUnirseGrupo1, detalleGrupo1, 2);
+        cardGrupoBaseDatos.setTag(false);
+        cardGrupoProgramacion.setTag(false);
+
+        configurarAccionGrupo(estadoGrupo1, btnUnirseGrupo1, detalleGrupo1, 2, cardGrupoBaseDatos);
+
+        tabBuscarGrupos.setOnClickListener(v -> {
+            mostrandoMisGrupos = false;
+            mostrarTodosLosGrupos();
+            actualizarTextoBotonesSegunTab();
+            actualizarTabs(tabBuscarGrupos, tabMisGrupos);
+        });
+
+        tabMisGrupos.setOnClickListener(v -> {
+            mostrandoMisGrupos = true;
+            mostrarSoloMisGrupos();
+            actualizarTextoBotonesSegunTab();
+            actualizarTabs(tabMisGrupos, tabBuscarGrupos);
+        });
 
         crearGrupoLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -52,26 +77,120 @@ public class GruposActivity extends AppCompatActivity {
         });
     }
 
-    private void configurarAccionGrupo(TextView estadoGrupo, TextView btnUnirseGrupo, TextView detalleGrupo, int integrantesIniciales) {
+    private void configurarAccionGrupo(TextView estadoGrupo, TextView btnUnirseGrupo, TextView detalleGrupo, int integrantesIniciales, LinearLayout cardGrupo) {
         final int[] integrantesFaltantes = {integrantesIniciales};
 
         btnUnirseGrupo.setOnClickListener(v -> {
-            if (btnUnirseGrupo.getText().toString().equals(getString(R.string.unirme_grupo))) {
+            String textoBoton = btnUnirseGrupo.getText().toString();
+
+            if (textoBoton.equals(getString(R.string.unirme_grupo))) {
                 integrantesFaltantes[0]--;
 
-                btnUnirseGrupo.setText(getString(R.string.salir_grupo));
+                btnUnirseGrupo.setText(getString(R.string.ya_estas_grupo));
                 estadoGrupo.setText(getString(R.string.grupo_estado_integrante));
                 estadoGrupo.setTextColor(0xFF5B45D9);
                 detalleGrupo.setText(obtenerTextoIntegrantes(integrantesFaltantes[0]));
-            } else {
+
+                cardGrupo.setTag(true);
+
+                if (mostrandoMisGrupos) {
+                    btnUnirseGrupo.setText(getString(R.string.salir_grupo));
+                }
+            } else if (textoBoton.equals(getString(R.string.salir_grupo))) {
                 integrantesFaltantes[0]++;
 
                 btnUnirseGrupo.setText(getString(R.string.unirme_grupo));
                 estadoGrupo.setText(getString(R.string.grupo_estado_abierto));
                 estadoGrupo.setTextColor(0xFF2E7D32);
                 detalleGrupo.setText(obtenerTextoIntegrantes(integrantesFaltantes[0]));
+
+                cardGrupo.setTag(false);
+
+                if (mostrandoMisGrupos) {
+                    cardGrupo.setVisibility(View.GONE);
+                }
             }
         });
+    }
+
+    private void mostrarTodosLosGrupos() {
+        for (int i = 0; i < contenedorListaGrupos.getChildCount(); i++) {
+            View card = contenedorListaGrupos.getChildAt(i);
+            card.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void mostrarSoloMisGrupos() {
+        for (int i = 0; i < contenedorListaGrupos.getChildCount(); i++) {
+            View card = contenedorListaGrupos.getChildAt(i);
+
+            Object tag = card.getTag();
+
+            if (tag instanceof Boolean && (Boolean) tag) {
+                card.setVisibility(View.VISIBLE);
+            } else {
+                card.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void actualizarTextoBotonesSegunTab() {
+        for (int i = 0; i < contenedorListaGrupos.getChildCount(); i++) {
+            View card = contenedorListaGrupos.getChildAt(i);
+            Object tag = card.getTag();
+
+            TextView botonAccion = obtenerBotonAccion(card);
+
+            if (botonAccion != null && tag instanceof Boolean && (Boolean) tag) {
+                if (mostrandoMisGrupos) {
+                    botonAccion.setText(getString(R.string.salir_grupo));
+                } else {
+                    botonAccion.setText(getString(R.string.ya_estas_grupo));
+                }
+            }
+        }
+    }
+
+    private TextView obtenerBotonAccion(View card) {
+        if (!(card instanceof LinearLayout)) {
+            return null;
+        }
+
+        LinearLayout cardLayout = (LinearLayout) card;
+
+        if (cardLayout.getChildCount() == 0) {
+            return null;
+        }
+
+        View ultimaVista = cardLayout.getChildAt(cardLayout.getChildCount() - 1);
+
+        if (!(ultimaVista instanceof LinearLayout)) {
+            return null;
+        }
+
+        LinearLayout filaAcciones = (LinearLayout) ultimaVista;
+
+        if (filaAcciones.getChildCount() < 2) {
+            return null;
+        }
+
+        View boton = filaAcciones.getChildAt(1);
+
+        if (boton instanceof TextView) {
+            return (TextView) boton;
+        }
+
+        return null;
+    }
+
+    private void actualizarTabs(TextView tabActivo, TextView tabInactivo) {
+        tabActivo.setBackgroundColor(0xFF5B45D9);
+        tabActivo.setTextColor(0xFFFFFFFF);
+        tabActivo.setTypeface(null, Typeface.BOLD);
+
+        tabInactivo.setBackgroundColor(0xFFFFFFFF);
+        tabInactivo.setTextColor(0xFF666666);
+        tabInactivo.setTypeface(null, Typeface.NORMAL);
     }
 
     private String obtenerTextoIntegrantes(int cantidad) {
@@ -91,11 +210,13 @@ public class GruposActivity extends AppCompatActivity {
 
         return Integer.parseInt(soloNumeros);
     }
+
     private void crearGrupoDinamico(String titulo, String detalle, String descripcion) {
         LinearLayout cardGrupo = new LinearLayout(this);
         cardGrupo.setOrientation(LinearLayout.VERTICAL);
         cardGrupo.setPadding(dp(24), dp(20), dp(24), dp(20));
         cardGrupo.setBackgroundResource(R.drawable.bg_card);
+        cardGrupo.setTag(false);
 
         LinearLayout.LayoutParams parametrosCard = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -119,7 +240,7 @@ public class GruposActivity extends AppCompatActivity {
         descripcionGrupo.setText(descripcion);
         descripcionGrupo.setTextSize(13);
         descripcionGrupo.setTextColor(0xFF555555);
-        descripcionGrupo.setPadding(0, 4, 0, 0);
+        descripcionGrupo.setPadding(0, dp(4), 0, 0);
 
         TextView estadoGrupo = new TextView(this);
         estadoGrupo.setText(getString(R.string.grupo_estado_abierto));
@@ -151,7 +272,8 @@ public class GruposActivity extends AppCompatActivity {
                 estadoGrupo,
                 btnUnirseGrupo,
                 detalleGrupo,
-                obtenerCantidadDesdeDetalle(detalle)
+                obtenerCantidadDesdeDetalle(detalle),
+                cardGrupo
         );
 
         LinearLayout filaAcciones = new LinearLayout(this);
@@ -168,6 +290,10 @@ public class GruposActivity extends AppCompatActivity {
         cardGrupo.addView(filaAcciones);
 
         contenedorListaGrupos.addView(cardGrupo);
+
+        if (mostrandoMisGrupos) {
+            cardGrupo.setVisibility(View.GONE);
+        }
     }
 
     private int dp(int valor) {
