@@ -53,4 +53,17 @@
     <string name="menu_calendario">Calendario</string>
     <string name="menu_chat">Chat</string>
     <string name="menu_perfil">Perfil</string>
+
+    <!-- Crear grupo -->
+    <string name="titulo_crear_grupo">Crear grupo</string>
+    <string name="label_titulo_grupo">Título del grupo</string>
+    <string name="hint_titulo_grupo">Ej: Parcial 1 - Aplicaciones Móviles</string>
+    <string name="label_materia_grupo">Materia</string>
+    <string name="hint_materia_grupo">Ej: Aplicaciones Móviles</string>
+    <string name="label_descripcion_grupo">Descripción</string>
+    <string name="hint_descripcion_grupo">Contá de qué se trata el grupo</string>
+    <string name="label_integrantes_grupo">Cantidad de integrantes</string>
+    <string name="hint_integrantes_grupo">Ej: 2</string>
+    <string name="publicar_grupo">Publicar grupo</string>
+    <string name="grupo_publicado">Grupo publicado correctamente</string>
 </resources>

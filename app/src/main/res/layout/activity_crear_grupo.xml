@@ -1,10 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".CrearGrupoActivity">
+
+    <TextView
+        android:id="@+id/tituloCrearGrupo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/topbar_height"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/titulo_crear_grupo"
+        android:textColor="@color/textWhite"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollFormularioGrupo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="@dimen/margin_screen"
+        android:paddingEnd="@dimen/margin_screen"
+        android:paddingTop="@dimen/space_lg"
+        android:paddingBottom="@dimen/space_lg"
+        app:layout_constraintTop_toBottomOf="@id/tituloCrearGrupo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/contenedorFormularioGrupo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/labelTituloGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_titulo_grupo"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/inputTituloGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:layout_marginTop="@dimen/space_sm"
+                android:layout_marginBottom="@dimen/form_field_margin"
+                android:background="@drawable/bg_input"
+                android:hint="@string/hint_titulo_grupo"
+                android:inputType="text"
+                android:padding="@dimen/padding_small"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/text_regular" />
+
+            <TextView
+                android:id="@+id/labelMateriaGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_materia_grupo"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/inputMateriaGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:layout_marginTop="@dimen/space_sm"
+                android:layout_marginBottom="@dimen/form_field_margin"
+                android:background="@drawable/bg_input"
+                android:hint="@string/hint_materia_grupo"
+                android:inputType="text"
+                android:padding="@dimen/padding_small"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/text_regular" />
+
+            <TextView
+                android:id="@+id/labelDescripcionGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_descripcion_grupo"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/inputDescripcionGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginTop="@dimen/space_sm"
+                android:layout_marginBottom="@dimen/form_field_margin"
+                android:background="@drawable/bg_input"
+                android:gravity="top"
+                android:hint="@string/hint_descripcion_grupo"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:padding="@dimen/padding_small"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/text_regular" />
+
+            <TextView
+                android:id="@+id/labelIntegrantesGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_integrantes_grupo"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/inputIntegrantesGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:layout_marginTop="@dimen/space_sm"
+                android:layout_marginBottom="@dimen/space_lg"
+                android:background="@drawable/bg_input"
+                android:hint="@string/hint_integrantes_grupo"
+                android:inputType="number"
+                android:padding="@dimen/padding_small"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/text_regular" />
+
+            <Button
+                android:id="@+id/btnPublicarGrupo"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@null"
+                android:text="@string/publicar_grupo"
+                android:textAllCaps="false"
+                android:textColor="@color/textWhite"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
