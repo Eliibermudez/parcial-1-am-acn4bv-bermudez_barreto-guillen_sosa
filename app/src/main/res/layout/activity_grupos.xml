@@ -8,6 +8,7 @@
     android:background="@color/colorBackground"
     tools:context=".GruposActivity">
 
+
     <TextView
         android:id="@+id/tituloGrupos"
         android:layout_width="0dp"
@@ -20,7 +21,8 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <LinearLayout
         android:id="@+id/contenedorTabs"

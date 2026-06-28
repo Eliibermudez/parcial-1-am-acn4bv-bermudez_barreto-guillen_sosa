@@ -1,19 +1,23 @@
 package com.example.app_campus;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MateriasActivity extends AppCompatActivity {
 
-    private LinearLayout listaMaterias;
+    private RecyclerView listaMaterias;
+    private MateriaAdapter adapter;
+    private List<Materia> lista;
 
     String[] materias = {
             "Matemática",
@@ -23,21 +27,69 @@ public class MateriasActivity extends AppCompatActivity {
             "Sistemas Operativos"
     };
 
-    int index = 2;
-    int MAX_INICIAL = 2;
-    int MAX_TOTAL = materias.length;
+    int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_materias);
 
-        listaMaterias = findViewById(R.id.layoutListaMaterias);
+        listaMaterias = findViewById(R.id.recyclerMaterias);
         ImageView btnAgregar = findViewById(R.id.btnAdd);
 
+        lista = new ArrayList<>();
+
+        // Adapter
+        adapter = new MateriaAdapter(this, lista, (materia, position) ->
+                Toast.makeText(this, materia.getNombre(), Toast.LENGTH_SHORT).show()
+        );
+
+        listaMaterias.setLayoutManager(new LinearLayoutManager(this));
+        listaMaterias.setAdapter(adapter);
+
+        agregarMateriaInicial();
+        agregarMateriaInicial();
 
         btnAgregar.setOnClickListener(v -> agregarMateria());
+
+        // Bottom Navigation
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        bottomNavigationView.setSelectedItemId(R.id.nav_materias);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_inicio) {
+                return true;
+
+            } else if (id == R.id.nav_materias) {
+                return true;
+
+            } else if (id == R.id.nav_grupos) {
+                return true;
+
+            } else if (id == R.id.nav_calendario) {
+                return true;
+
+            } else if (id == R.id.nav_chat) {
+                return true;
+
+            } else if (id == R.id.nav_perfil) {
+                return true;
+            }
+
+            return false;
+        });
     }
+
+    private void agregarMateriaInicial() {
+        if (index < materias.length) {
+            lista.add(new Materia(materias[index], "Pendiente de horario"));
+            index++;
+        }
+    }
+
     private void agregarMateria() {
 
         if (index >= materias.length) {
@@ -45,52 +97,11 @@ public class MateriasActivity extends AppCompatActivity {
             return;
         }
 
-        agregarCardMateria(materias[index]);
+        lista.add(new Materia(materias[index], "Pendiente de horario"));
+        adapter.notifyItemInserted(lista.size() - 1);
 
         Toast.makeText(this, "Materia agregada", Toast.LENGTH_SHORT).show();
 
         index++;
-    }
-
-    private void agregarCardMateria(String nombreMateria) {
-
-        LinearLayout card = new LinearLayout(this);
-        card.setOrientation(LinearLayout.VERTICAL);
-        card.setPadding(32, 32, 32, 32);
-        card.setBackgroundResource(R.drawable.bg_card);
-
-        LinearLayout.LayoutParams paramsCard = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-        paramsCard.setMargins(0, 0, 0, 24);
-        card.setLayoutParams(paramsCard);
-
-        TextView titulo = new TextView(this);
-        titulo.setText(nombreMateria);
-        titulo.setTextSize(16);
-        titulo.setTextColor(0xFF222222);
-        titulo.setTypeface(null, Typeface.BOLD);
-
-        TextView detalle = new TextView(this);
-        detalle.setText("Pendiente de horario");
-        detalle.setTextSize(13);
-        detalle.setTextColor(0xFF555555);
-
-        LinearLayout.LayoutParams paramsDetalle = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-        paramsDetalle.setMargins(0, 8, 0, 0);
-        detalle.setLayoutParams(paramsDetalle);
-
-        card.addView(titulo);
-        card.addView(detalle);
-
-        listaMaterias.addView(card);
-
-        card.setOnClickListener(v ->
-                Toast.makeText(this, nombreMateria, Toast.LENGTH_SHORT).show()
-        );
     }
 }
