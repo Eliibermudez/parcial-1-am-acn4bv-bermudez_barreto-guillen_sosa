@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,28 +9,56 @@
     android:background="@color/colorBackground"
     tools:context=".GruposActivity">
 
-    <TextView
-        android:id="@+id/tituloGrupos"
+    <RelativeLayout
+        android:id="@+id/headerGrupos"
         android:layout_width="0dp"
-        android:layout_height="@dimen/topbar_height"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="@string/titulo_grupos"
-        android:textColor="@color/textWhite"
-        android:textSize="@dimen/text_title"
-        android:textStyle="bold"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_header"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBackGrupos"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_back"
+            app:tint="@color/textWhite" />
+
+        <TextView
+            android:id="@+id/txtTituloGrupos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_grupos"
+            android:textColor="@color/textWhite"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/btnCrearGrupo"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_add"
+            app:tint="@color/textWhite" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/contenedorTabs"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_screen"
+        android:layout_marginStart="@dimen/margin_screen"
+        android:layout_marginEnd="@dimen/margin_screen"
+        android:layout_marginTop="@dimen/space_lg"
         android:orientation="horizontal"
         android:padding="@dimen/padding_small"
-        app:layout_constraintTop_toBottomOf="@id/tituloGrupos"
+        app:layout_constraintTop_toBottomOf="@id/headerGrupos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -67,10 +96,10 @@
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/margin_screen"
         android:layout_marginEnd="@dimen/margin_screen"
-        android:layout_marginBottom="@dimen/margin_between_cards"
+        android:layout_marginBottom="@dimen/space_sm"
         android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/contenedorTabs"
-        app:layout_constraintBottom_toTopOf="@id/btnCrearGrupo"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -200,20 +229,16 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnCrearGrupo"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginStart="@dimen/margin_screen"
-        android:layout_marginEnd="@dimen/margin_screen"
-        android:layout_marginBottom="@dimen/margin_button_bottom"
-        android:background="@drawable/bg_button"
-        android:backgroundTint="@null"
-        android:text="@string/crear_grupo"
-        android:textAllCaps="false"
-        android:textColor="@color/colorTextButton"
-        android:textSize="@dimen/text_regular"
-        android:textStyle="bold"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_bottom_nav"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

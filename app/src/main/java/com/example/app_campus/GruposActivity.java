@@ -5,9 +5,12 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -24,8 +27,54 @@ public class GruposActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grupos);
 
-        Button btnCrearGrupo = findViewById(R.id.btnCrearGrupo);
+        ImageView btnCrearGrupo = findViewById(R.id.btnCrearGrupo);
+        ImageView btnBackGrupos = findViewById(R.id.btnBackGrupos);
         contenedorListaGrupos = findViewById(R.id.contenedorListaGrupos);
+
+        btnBackGrupos.setOnClickListener(v -> {
+            Intent intent = new Intent(GruposActivity.this, HomeActivity.class);
+            startActivity(intent);
+        });
+
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+        bottomNavigation.setSelectedItemId(R.id.nav_grupos);
+
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_inicio) {
+                Intent intent = new Intent(GruposActivity.this, HomeActivity.class);
+                startActivity(intent);
+                return true;
+            }
+
+            if (itemId == R.id.nav_materias) {
+                Intent intent = new Intent(GruposActivity.this, MateriasActivity.class);
+                startActivity(intent);
+                return true;
+            }
+
+            if (itemId == R.id.nav_grupos) {
+                return true;
+            }
+
+            if (itemId == R.id.nav_calendario) {
+                Toast.makeText(this, "Calendario en desarrollo", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            if (itemId == R.id.nav_chat) {
+                Toast.makeText(this, "Chat en desarrollo", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            if (itemId == R.id.nav_perfil) {
+                Toast.makeText(this, "Perfil en desarrollo", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            return false;
+        });
 
         TextView tabBuscarGrupos = findViewById(R.id.tabBuscarGrupos);
         TextView tabMisGrupos = findViewById(R.id.tabMisGrupos);
