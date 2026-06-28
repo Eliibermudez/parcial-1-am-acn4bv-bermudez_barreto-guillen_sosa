@@ -19,4 +19,6 @@
     <color name="colorSuccess">#2E7D32</color>
     <color name="colorDanger">#C62828</color>
 
+    <color name="White">#FFFFFF</color>
+
 </resources>
