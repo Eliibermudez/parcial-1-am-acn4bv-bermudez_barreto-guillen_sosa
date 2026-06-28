@@ -56,8 +56,6 @@
 
     <!-- Crear grupo -->
     <string name="titulo_crear_grupo">Crear grupo</string>
-    <string name="label_titulo_grupo">Título del grupo</string>
-    <string name="hint_titulo_grupo">Ej: Parcial 1 - Aplicaciones Móviles</string>
     <string name="label_materia_grupo">Materia</string>
     <string name="hint_materia_grupo">Ej: Aplicaciones Móviles</string>
     <string name="label_descripcion_grupo">Descripción</string>

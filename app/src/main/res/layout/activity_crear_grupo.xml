@@ -1,27 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     tools:context=".CrearGrupoActivity">
 
-    <TextView
-        android:id="@+id/tituloCrearGrupo"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerCrearGrupo"
         android:layout_width="0dp"
         android:layout_height="@dimen/topbar_height"
         android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="@string/titulo_crear_grupo"
-        android:textColor="@color/textWhite"
-        android:textSize="@dimen/text_title"
-        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/btnVolverCrearGrupo"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="‹"
+            android:textColor="@color/textWhite"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tituloCrearGrupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_crear_grupo"
+            android:textColor="@color/textWhite"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:id="@+id/scrollFormularioGrupo"
@@ -31,7 +54,7 @@
         android:paddingEnd="@dimen/margin_screen"
         android:paddingTop="@dimen/space_lg"
         android:paddingBottom="@dimen/space_lg"
-        app:layout_constraintTop_toBottomOf="@id/tituloCrearGrupo"
+        app:layout_constraintTop_toBottomOf="@id/headerCrearGrupo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -41,29 +64,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/labelTituloGrupo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/label_titulo_grupo"
-                android:textColor="@color/textPrimary"
-                android:textSize="@dimen/text_regular"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/inputTituloGrupo"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/input_height"
-                android:layout_marginTop="@dimen/space_sm"
-                android:layout_marginBottom="@dimen/form_field_margin"
-                android:background="@drawable/bg_input"
-                android:hint="@string/hint_titulo_grupo"
-                android:inputType="text"
-                android:padding="@dimen/padding_small"
-                android:textColor="@color/textPrimary"
-                android:textColorHint="@color/textSecondary"
-                android:textSize="@dimen/text_regular" />
 
             <TextView
                 android:id="@+id/labelMateriaGrupo"
@@ -150,6 +150,7 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
