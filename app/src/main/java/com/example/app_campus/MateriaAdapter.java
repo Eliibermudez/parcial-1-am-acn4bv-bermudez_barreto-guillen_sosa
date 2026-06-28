@@ -39,8 +39,8 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.MateriaV
     public void onBindViewHolder(@NonNull MateriaViewHolder holder, int position) {
         Materia materia = listaMaterias.get(position);
 
-        holder.txtNombre.setText(materia.getNombre());
-        holder.txtProfesor.setText(materia.getProfesor());
+        holder.txtNombre.setText(materia.nombre);
+        holder.txtProfesor.setText(materia.docente);
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
@@ -66,5 +66,6 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.MateriaV
             txtNombre = itemView.findViewById(R.id.txtNombre);
             txtProfesor = itemView.findViewById(R.id.txtProfesor);
         }
+
     }
 }

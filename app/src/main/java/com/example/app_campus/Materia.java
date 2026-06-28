@@ -1,19 +1,20 @@
 package com.example.app_campus;
+
 public class Materia {
 
-    private String nombre;
-    private String profesor;
+    public String cuatrimestre;
+    public String comision;
+    public String nombre;
+    public String horario;
+    public String docente;
 
-    public Materia(String nombre, String profesor) {
+    public Materia(String cuatrimestre, String comision,
+                   String nombre, String horario, String docente) {
+
+        this.cuatrimestre = cuatrimestre;
+        this.comision = comision;
         this.nombre = nombre;
-        this.profesor = profesor;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getProfesor() {
-        return profesor;
+        this.horario = horario;
+        this.docente = docente;
     }
 }
