@@ -26,8 +26,8 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:background="@drawable/bg_header"
+        android:layout_height="@dimen/topbar_height"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">

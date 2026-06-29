@@ -10,8 +10,8 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:background="@drawable/bg_header"
+        android:layout_height="@dimen/topbar_height"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -29,7 +29,7 @@
             android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mi perfil"
+            android:text="@string/mi_perfil"
             android:textColor="@color/textWhite"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -157,7 +157,7 @@
                     android:id="@+id/btnEditar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Editar perfil"
+                    android:text="@string/editar_perfil"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_button"/>
 

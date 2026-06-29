@@ -106,5 +106,7 @@
     <string name="banner_novedades_imagen">Imagen destacada de novedades académicas</string>
     <string name="fechas_de_parciales">Fechas de parciales</string>
     <string name="fechas_parciales">Fechas de Parciales</string>
+    <string name="mi_perfil">Mi perfil</string>
+    <string name="editar_perfil">Editar perfil</string>
 
 </resources>
