@@ -29,6 +29,8 @@
 
         <activity android:name=".PerfilActivity" />
 
+        <activity android:name=".EditarPerfilActivity" />
+
         <activity
             android:name=".HomeActivity"
             android:exported="false" />

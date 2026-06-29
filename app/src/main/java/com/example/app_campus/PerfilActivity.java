@@ -1,14 +1,14 @@
 package com.example.app_campus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.content.Intent;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PerfilActivity extends AppCompatActivity {
 
@@ -20,22 +20,52 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        // Referencias
+        initViews();
+        initListeners();
+
+        cargarDatos();
+        setupBottomNav();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarDatos();
+    }
+
+    //init views
+    private void initViews() {
         txtNombre = findViewById(R.id.txtNombre);
         txtEmail = findViewById(R.id.txtEmail);
+        txtTelefono = findViewById(R.id.txtTelefono);
         txtCarrera = findViewById(R.id.txtCarrera);
         txtComision = findViewById(R.id.txtComision);
         txtTurno = findViewById(R.id.txtTurno);
-        txtTelefono = findViewById(R.id.txtTelefono);
         btnEditar = findViewById(R.id.btnEditar);
+    }
 
-        // Datos de prueba
-        cargarDatos();
+    //listeners
+    private void initListeners() {
 
         btnEditar.setOnClickListener(v -> {
-            Intent intent = new Intent(PerfilActivity.this, EditarPerfilActivity.class);
+            Intent intent = new Intent(this, EditarPerfilActivity.class);
             startActivity(intent);
         });
+    }
+
+    private void cargarDatos() {
+
+        txtNombre.setText(PerfilRepository.nombre);
+        txtEmail.setText(PerfilRepository.email);
+        txtTelefono.setText(PerfilRepository.telefono);
+
+        txtCarrera.setText(PerfilRepository.carrera);
+        txtComision.setText(PerfilRepository.comision);
+        txtTurno.setText(PerfilRepository.turno);
+    }
+
+    //nav
+    private void setupBottomNav() {
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
         bottomNavigation.setSelectedItemId(R.id.nav_perfil);
@@ -72,21 +102,7 @@ public class PerfilActivity extends AppCompatActivity {
                 return false;
             }
 
-            if (id == R.id.nav_perfil) {
-                return true;
-            }
-
-            return false;
+            return id == R.id.nav_perfil;
         });
-    }
-
-    private void cargarDatos() {
-        txtNombre.setText("Juana Pérez");
-        txtEmail.setText("juan.perez@davinci.edu.ar");
-
-        txtCarrera.setText("Analista de Sistemas");
-        txtComision.setText("ACN4BV");
-        txtTurno.setText("Noche");
-        txtTelefono.setText("+11 5555-5555");
     }
 }

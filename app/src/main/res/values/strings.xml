@@ -108,5 +108,6 @@
     <string name="fechas_parciales">Fechas de Parciales</string>
     <string name="mi_perfil">Mi perfil</string>
     <string name="editar_perfil">Editar perfil</string>
+    <string name="guardar_cambios">Guardar cambios</string>
 
 </resources>
