@@ -16,6 +16,8 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout btnAccesoCalendario;
     private LinearLayout btnAccesoNovedades;
 
+    private LinearLayout btnAccesoPerfil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +70,9 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             if (itemId == R.id.nav_calendario) {
-                Toast.makeText(this, "Calendario en desarrollo", Toast.LENGTH_SHORT).show();
-                return false;
+                Intent intent = new Intent(HomeActivity.this, CalendarioActivity.class);
+                startActivity(intent);
+                return true;
             }
 
             if (itemId == R.id.nav_chat) {
@@ -79,8 +82,9 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             if (itemId == R.id.nav_perfil) {
-                Toast.makeText(this, "Perfil en desarrollo", Toast.LENGTH_SHORT).show();
-                return false;
+                Intent intent = new Intent(HomeActivity.this, PerfilActivity.class);
+                startActivity(intent);
+                return true;
             }
 
             return false;
