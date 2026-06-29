@@ -33,6 +33,12 @@ public class MateriasActivity extends AppCompatActivity {
         contenedorMaterias = findViewById(R.id.contenedorMaterias);
         btnAgregar = findViewById(R.id.btnAdd);
 
+        ImageView btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(v -> {
+            finish();
+        });
+
         if (MateriasRepository.listaMaterias.isEmpty()) {
 
             Materia materiaInicial = new Materia(
