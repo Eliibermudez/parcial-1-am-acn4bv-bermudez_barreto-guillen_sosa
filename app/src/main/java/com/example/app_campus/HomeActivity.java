@@ -3,31 +3,87 @@ package com.example.app_campus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class HomeActivity extends AppCompatActivity {
 
-    private LinearLayout cardGrupos;
-    private LinearLayout cardMaterias;
+    private LinearLayout btnAccesoMaterias;
+    private LinearLayout btnAccesoGrupos;
+    private LinearLayout btnAccesoCalendario;
+    private LinearLayout btnAccesoNovedades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        cardMaterias = findViewById(R.id.cardMaterias);
+        btnAccesoMaterias = findViewById(R.id.btnAccesoMaterias);
+        btnAccesoGrupos = findViewById(R.id.btnAccesoGrupos);
+        btnAccesoCalendario = findViewById(R.id.btnAccesoCalendario);
+        btnAccesoNovedades = findViewById(R.id.btnAccesoNovedades);
 
-        cardMaterias.setOnClickListener(v -> {
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+        bottomNavigation.setSelectedItemId(R.id.nav_inicio);
+
+        btnAccesoMaterias.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MateriasActivity.class);
             startActivity(intent);
         });
 
-        cardGrupos = findViewById(R.id.cardGrupos);
-
-        cardGrupos.setOnClickListener(v -> {
+        btnAccesoGrupos.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, GruposActivity.class);
             startActivity(intent);
+        });
+
+        btnAccesoCalendario.setOnClickListener(v -> {
+            Toast.makeText(this, "Calendario en desarrollo", Toast.LENGTH_SHORT).show();
+        });
+
+        btnAccesoNovedades.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, NovedadesActivity.class);
+            startActivity(intent);
+        });
+
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_inicio) {
+                return true;
+            }
+
+            if (itemId == R.id.nav_materias) {
+                Intent intent = new Intent(HomeActivity.this, MateriasActivity.class);
+                startActivity(intent);
+                return true;
+            }
+
+            if (itemId == R.id.nav_grupos) {
+                Intent intent = new Intent(HomeActivity.this, GruposActivity.class);
+                startActivity(intent);
+                return true;
+            }
+
+            if (itemId == R.id.nav_calendario) {
+                Toast.makeText(this, "Calendario en desarrollo", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            if (itemId == R.id.nav_chat) {
+                Intent intent = new Intent(HomeActivity.this, NovedadesActivity.class);
+                startActivity(intent);
+                return true;
+            }
+
+            if (itemId == R.id.nav_perfil) {
+                Toast.makeText(this, "Perfil en desarrollo", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            return false;
         });
     }
 }

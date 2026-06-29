@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,73 +9,275 @@
     android:background="@color/colorBackground"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:id="@+id/tituloHome"
+    <RelativeLayout
+        android:id="@+id/headerHome"
         android:layout_width="0dp"
-        android:layout_height="@dimen/topbar_height"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="@string/titulo_home"
-        android:textColor="@color/textWhite"
-        android:textSize="@dimen/text_title"
-        android:textStyle="bold"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_header"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
-        android:id="@+id/contenedorCards"
+        <TextView
+            android:id="@+id/txtTituloHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_home"
+            android:textColor="@color/textWhite"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/margin_screen"
-        android:paddingEnd="@dimen/margin_screen"
-        android:paddingTop="@dimen/space_lg"
-        android:paddingBottom="@dimen/margin_screen"
-        app:layout_constraintTop_toBottomOf="@id/tituloHome"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/margin_screen"
+        android:layout_marginEnd="@dimen/margin_screen"
+        android:layout_marginTop="@dimen/space_lg"
+        android:layout_marginBottom="@dimen/space_sm"
+        app:layout_constraintTop_toBottomOf="@id/headerHome"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:id="@+id/cardMaterias"
+            android:id="@+id/contenedorHome"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/card_height"
-            android:layout_marginBottom="@dimen/margin_between_cards"
-            android:background="@drawable/bg_card"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_medium">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/iconMaterias"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:background="@drawable/bg_icon_purple"
-                android:gravity="center"
-                android:text="@string/icono_materias"
-                android:textSize="@dimen/text_big" />
+                android:id="@+id/txtBienvenida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/home_bienvenida"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtSubtituloHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xs"
+                android:text="@string/home_subtitulo"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_regular" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/bannerHome"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_md"
-                android:orientation="vertical">
+                android:minHeight="135dp"
+                android:layout_marginTop="@dimen/space_lg"
+                android:background="@drawable/bg_banner_novedades"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_large">
 
                 <TextView
-                    android:id="@+id/txtMaterias"
+                    android:id="@+id/txtBannerHomeCategoria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/mis_materias"
+                    android:background="@drawable/bg_chip_gray"
+                    android:paddingStart="14dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/home_banner_categoria"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtBannerHomeTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:text="@string/home_banner_titulo"
+                    android:textColor="@color/textWhite"
+                    android:textSize="@dimen/text_large"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtBannerHomeDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:text="@string/home_banner_descripcion"
+                    android:textColor="@color/textWhite"
+                    android:textSize="@dimen/text_medium" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtAccesosRapidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:layout_marginBottom="@dimen/space_md"
+                android:text="@string/home_accesos_rapidos"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_large"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:id="@+id/gridAccesosHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2">
+
+                <LinearLayout
+                    android:id="@+id/btnAccesoMaterias"
+                    android:layout_width="0dp"
+                    android:layout_height="105dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="@dimen/space_sm"
+                    android:layout_marginBottom="@dimen/space_sm"
+                    android:background="@drawable/bg_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/icono_materias"
+                        android:textSize="@dimen/text_big" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:text="@string/menu_materias"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_regular"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnAccesoGrupos"
+                    android:layout_width="0dp"
+                    android:layout_height="105dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/space_sm"
+                    android:layout_marginBottom="@dimen/space_sm"
+                    android:background="@drawable/bg_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/icono_grupos"
+                        android:textSize="@dimen/text_big" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:text="@string/menu_grupos"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_regular"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnAccesoCalendario"
+                    android:layout_width="0dp"
+                    android:layout_height="105dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="@dimen/space_sm"
+                    android:background="@drawable/bg_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/icono_calendario"
+                        android:textSize="@dimen/text_big" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:text="@string/menu_calendario"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_regular"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnAccesoNovedades"
+                    android:layout_width="0dp"
+                    android:layout_height="105dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="@dimen/space_sm"
+                    android:background="@drawable/bg_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/icono_novedades"
+                        android:textSize="@dimen/text_big" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:text="@string/menu_chat"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="@dimen/text_regular"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </GridLayout>
+
+            <LinearLayout
+                android:id="@+id/resumenHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:layout_marginBottom="@dimen/space_lg"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_card">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_resumen_titulo"
                     android:textColor="@color/textPrimary"
                     android:textSize="@dimen/text_large"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtDetalleMaterias"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/detalle_materias"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:text="@string/home_resumen_detalle"
                     android:textColor="@color/textMuted"
                     android:textSize="@dimen/text_medium" />
 
@@ -81,52 +285,20 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/cardGrupos"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/card_height"
-            android:layout_marginBottom="@dimen/margin_between_cards"
-            android:background="@drawable/bg_card"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_medium">
+    </ScrollView>
 
-            <TextView
-                android:id="@+id/iconGrupos"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:background="@drawable/bg_icon_purple"
-                android:gravity="center"
-                android:text="@string/icono_grupos"
-                android:textSize="@dimen/text_big" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_md"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txtGrupos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/grupos_trabajo"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/text_large"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtDetalleGrupos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/detalle_grupos"
-                    android:textColor="@color/textSecondary"
-                    android:textSize="@dimen/text_medium" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_bottom_nav"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
