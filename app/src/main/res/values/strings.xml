@@ -104,4 +104,7 @@
     <string name="banner_novedades_descripcion">Consultá avisos importantes, fechas de entrega y novedades académicas en un solo lugar.</string>
     <string name="novedades_recientes">Novedades recientes</string>
     <string name="banner_novedades_imagen">Imagen destacada de novedades académicas</string>
+    <string name="fechas_de_parciales">Fechas de parciales</string>
+    <string name="fechas_parciales">Fechas de Parciales</string>
+
 </resources>

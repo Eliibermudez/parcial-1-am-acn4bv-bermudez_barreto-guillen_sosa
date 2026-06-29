@@ -15,6 +15,8 @@
 
         <activity android:name=".NovedadesActivity" />
 
+        <activity android:name=".CalendarioActivity" />
+
         <activity
             android:name=".CrearGrupoActivity"
             android:exported="false" />

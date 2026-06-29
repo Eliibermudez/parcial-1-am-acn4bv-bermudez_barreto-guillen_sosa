@@ -196,8 +196,8 @@ public class MateriasActivity extends AppCompatActivity {
             }
 
             if (id == R.id.nav_calendario) {
-                Toast.makeText(this, "En desarrollo", Toast.LENGTH_SHORT).show();
-                return false;
+                startActivity(new Intent(this, CalendarioActivity.class));
+                finish();
             }
 
             if (id == R.id.nav_chat) {
