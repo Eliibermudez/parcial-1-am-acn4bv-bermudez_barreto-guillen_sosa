@@ -64,8 +64,9 @@ public class GruposActivity extends AppCompatActivity {
             }
 
             if (itemId == R.id.nav_chat) {
-                Toast.makeText(this, "Chat en desarrollo", Toast.LENGTH_SHORT).show();
-                return false;
+                Intent intent = new Intent(GruposActivity.this, NovedadesActivity.class);
+                startActivity(intent);
+                return true;
             }
 
             if (itemId == R.id.nav_perfil) {

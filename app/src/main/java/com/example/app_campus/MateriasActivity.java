@@ -201,8 +201,9 @@ public class MateriasActivity extends AppCompatActivity {
             }
 
             if (id == R.id.nav_chat) {
-                Toast.makeText(this, "En desarrollo", Toast.LENGTH_SHORT).show();
-                return false;
+                Intent intent = new Intent(MateriasActivity.this, NovedadesActivity.class);
+                startActivity(intent);
+                return true;
             }
 
             if (id == R.id.nav_perfil) {

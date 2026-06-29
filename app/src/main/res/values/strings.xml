@@ -51,7 +51,7 @@
     <string name="menu_materias">Materias</string>
     <string name="menu_grupos">Grupos</string>
     <string name="menu_calendario">Calendario</string>
-    <string name="menu_chat">Chat</string>
+    <string name="menu_chat">Novedades</string>
     <string name="menu_perfil">Perfil</string>
 
     <!-- Crear grupo -->
@@ -75,4 +75,23 @@
     <string name="salir_grupo">Salir del grupo</string>
     <string name="grupo_estado_integrante">Integrante</string>
     <string name="ya_estas_grupo">Estás en el grupo</string>
+
+    <!-- Novedades -->
+    <string name="titulo_novedades">Novedades</string>
+    <string name="novedad_categoria_academica">Académica</string>
+    <string name="novedad_categoria_grupos">Grupos</string>
+    <string name="novedad_categoria_institucional">Institucional</string>
+    <string name="novedad_titulo_1">Inscripción a materias abierta</string>
+    <string name="novedad_descripcion_1">Ya podés revisar las materias disponibles para el próximo período académico.</string>
+    <string name="novedad_titulo_2">Nuevo grupo disponible</string>
+    <string name="novedad_descripcion_2">Se creó un grupo para preparar el parcial de Aplicaciones Móviles.</string>
+    <string name="novedad_titulo_3">Recordatorio de entrega</string>
+    <string name="novedad_descripcion_3">La entrega del Parcial 2 debe realizarse mediante el Campus con el enlace al repositorio.</string>
+    <string name="marcar_como_leida">Marcar como leída</string>
+    <string name="novedad_leida">Leída</string>
+    <string name="resumen_novedades_pendientes">Tenés 3 novedades pendientes</string>
+    <string name="banner_novedades_categoria">Destacado</string>
+    <string name="banner_novedades_titulo">Organizá tu cursada desde Campus Estudiantil</string>
+    <string name="banner_novedades_descripcion">Consultá avisos importantes, fechas de entrega y novedades académicas en un solo lugar.</string>
+    <string name="novedades_recientes">Novedades recientes</string>
 </resources>

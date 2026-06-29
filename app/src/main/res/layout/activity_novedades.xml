@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".NovedadesActivity">
+
+    <RelativeLayout
+        android:id="@+id/headerNovedades"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_header"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBackNovedades"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_back"
+            app:tint="@color/textWhite" />
+
+        <TextView
+            android:id="@+id/txtTituloNovedades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_novedades"
+            android:textColor="@color/textWhite"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollNovedades"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_screen"
+        android:layout_marginEnd="@dimen/margin_screen"
+        android:layout_marginTop="@dimen/space_lg"
+        android:layout_marginBottom="@dimen/space_sm"
+        app:layout_constraintTop_toBottomOf="@id/headerNovedades"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/contenedorNovedades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/bannerNovedades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="160dp"
+                android:layout_marginBottom="@dimen/space_lg"
+                android:background="@drawable/bg_banner_novedades"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_large">
+
+                <TextView
+                    android:id="@+id/txtBannerCategoria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_chip_gray"
+                    android:paddingStart="14dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/banner_novedades_categoria"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtBannerTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:text="@string/banner_novedades_titulo"
+                    android:textColor="@color/textWhite"
+                    android:textSize="@dimen/text_large"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtBannerDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:text="@string/banner_novedades_descripcion"
+                    android:textColor="@color/textWhite"
+                    android:textSize="@dimen/text_medium" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtNovedadesRecientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_md"
+                android:text="@string/novedades_recientes"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtResumenNovedades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_md"
+                android:text="@string/resumen_novedades_pendientes"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/cardNovedad1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_between_cards"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_card">
+
+                <TextView
+                    android:id="@+id/categoriaNovedad1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/novedad_categoria_academica"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tituloNovedad1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:text="@string/novedad_titulo_1"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_large"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/descripcionNovedad1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:text="@string/novedad_descripcion_1"
+                    android:textColor="@color/textMuted"
+                    android:textSize="@dimen/text_medium" />
+
+                <TextView
+                    android:id="@+id/btnLeidaNovedad1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:background="@drawable/bg_chip_gray"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingStart="18dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="18dp"
+                    android:paddingBottom="6dp"
+                    android:text="@string/marcar_como_leida"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/text_small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardNovedad2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_between_cards"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_card">
+
+                <TextView
+                    android:id="@+id/categoriaNovedad2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/novedad_categoria_grupos"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tituloNovedad2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:text="@string/novedad_titulo_2"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_large"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/descripcionNovedad2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:text="@string/novedad_descripcion_2"
+                    android:textColor="@color/textMuted"
+                    android:textSize="@dimen/text_medium" />
+
+                <TextView
+                    android:id="@+id/btnLeidaNovedad2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:background="@drawable/bg_chip_gray"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingStart="18dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="18dp"
+                    android:paddingBottom="6dp"
+                    android:text="@string/marcar_como_leida"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/text_small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardNovedad3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_between_cards"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_card">
+
+                <TextView
+                    android:id="@+id/categoriaNovedad3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/novedad_categoria_institucional"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tituloNovedad3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:text="@string/novedad_titulo_3"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_large"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/descripcionNovedad3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:text="@string/novedad_descripcion_3"
+                    android:textColor="@color/textMuted"
+                    android:textSize="@dimen/text_medium" />
+
+                <TextView
+                    android:id="@+id/btnLeidaNovedad3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:background="@drawable/bg_chip_gray"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingStart="18dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="18dp"
+                    android:paddingBottom="6dp"
+                    android:text="@string/marcar_como_leida"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="@dimen/text_small" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_bottom_nav"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
