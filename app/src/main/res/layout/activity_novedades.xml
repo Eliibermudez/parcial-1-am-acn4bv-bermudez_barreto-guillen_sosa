@@ -69,6 +69,13 @@
                 android:orientation="vertical"
                 android:padding="@dimen/padding_large">
 
+                <ImageView
+                    android:id="@+id/imgBannerNovedades"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginBottom="@dimen/space_sm"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/banner_novedades_imagen" />
                 <TextView
                     android:id="@+id/txtBannerCategoria"
                     android:layout_width="wrap_content"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.bumptech.glide.Glide;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,7 @@ public class NovedadesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novedades);
 
+
         ImageView btnBackNovedades = findViewById(R.id.btnBackNovedades);
 
         TextView btnLeidaNovedad1 = findViewById(R.id.btnLeidaNovedad1);
@@ -32,6 +34,15 @@ public class NovedadesActivity extends AppCompatActivity {
         txtResumenNovedades = findViewById(R.id.txtResumenNovedades);
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+
+        ImageView imgBannerNovedades = findViewById(R.id.imgBannerNovedades);
+
+        Glide.with(this)
+                .load("https://images.pexels.com/photos/5965923/pexels-photo-5965923.jpeg?_gl=1*1iyo4gu*_ga*MTI2ODc2MDYwMi4xNzgyNzAyNDUw*_ga_8JE65Q40S6*czE3ODI3MDI0NTAkbzEkZzEkdDE3ODI3MDQwNDckajQ2JGwwJGgw")
+                .placeholder(R.drawable.bg_chip_gray)
+                .error(R.drawable.bg_chip_red)
+                .centerCrop()
+                .into(imgBannerNovedades);
 
         btnBackNovedades.setOnClickListener(v -> {
             Intent intent = new Intent(NovedadesActivity.this, HomeActivity.class);

@@ -4,18 +4,27 @@
     <string name="logo_campus">Logo Campus</string>
 
     <!-- Home -->
-    <string name="titulo_home">¡Hola, bienvenid@!</string>
-    <string name="icono_materias">📖</string>
+    <!-- Home -->
+    <string name="titulo_home">Inicio</string>
+    <string name="home_bienvenida">¡Hola, estudiante!</string>
+    <string name="home_subtitulo">Revisá tu cursada, grupos y novedades desde un solo lugar.</string>
+
+    <string name="home_banner_categoria">Próxima entrega</string>
+    <string name="home_banner_titulo">Parcial 2 - Aplicaciones Móviles</string>
+    <string name="home_banner_descripcion">Recordá revisar el repositorio y tener los commits de ambos integrantes actualizados.</string>
+
+    <string name="home_accesos_rapidos">Accesos rápidos</string>
+    <string name="home_resumen_titulo">Resumen de actividad</string>
+    <string name="home_resumen_detalle">Tenés 3 novedades pendientes, 1 grupo activo y una entrega próxima.</string>
+
+    <!-- Accesos / menú -->
     <string name="mis_materias">Mis materias</string>
-    <string name="detalle_materias">Ver tus materias y detalles</string>
-
-    <string name="icono_grupos">👥</string>
     <string name="grupos_trabajo">Grupos de trabajo</string>
-    <string name="detalle_grupos">Encuentra o crea tu grupo</string>
 
-    <!-- Pantalla Mis materias -->
-    <string name="titulo_materia">Mis materias</string>
-    <string name="volver">Volver</string>
+    <string name="icono_materias">📖</string>
+    <string name="icono_grupos">👥</string>
+    <string name="icono_calendario">📅</string>
+    <string name="icono_novedades">📢</string>
 
     <!-- Pantalla Grupos -->
     <string name="titulo_grupos">Grupos de trabajo</string>
@@ -94,4 +103,5 @@
     <string name="banner_novedades_titulo">Organizá tu cursada desde Campus Estudiantil</string>
     <string name="banner_novedades_descripcion">Consultá avisos importantes, fechas de entrega y novedades académicas en un solo lugar.</string>
     <string name="novedades_recientes">Novedades recientes</string>
+    <string name="banner_novedades_imagen">Imagen destacada de novedades académicas</string>
 </resources>
