@@ -21,7 +21,7 @@
 
 # APP MOBILE: CAMPUS ESTUDIANTIL
 
-Aplicación móvil desarrollada en Android que permite a los estudiantes gestionar sus materias y participar en grupos de trabajo de forma simple e intuitiva.
+Aplicación móvil desarrollada en Android que permite a los estudiantes gestionar su información académica, materias, grupos de trabajo, novedades, calendario de parciales y perfil de usuario de forma simple e intuitiva.
 
 ---
 
@@ -30,44 +30,47 @@ Aplicación móvil desarrollada en Android que permite a los estudiantes gestion
 El proyecto implementa:
 
 * ConstraintLayout
-* LinearLayout vertical y horizontal
+* LinearLayout (vertical y horizontal)
+* ScrollView
 * TextView
 * Button
 * ImageView
-* ScrollView
-* Variables de String
-* Variables de Dimensiones 
-* Variables de Colores
-* Uso de archivos drawable
-* Eventos con setOnClickListener
+* BottomNavigationView
+* Uso de recursos (strings, colores, dimensiones)
+* Uso de drawables personalizados (shapes, backgrounds)
+* Manejo de eventos con setOnClickListener
 * Navegación entre pantallas mediante Intent
+* Ciclo de vida de Activities (onCreate, onResume)
 * Creación dinámica de elementos desde Java
+* Uso de repositorios en memoria (Patrón Repository)
+* Carga de imágenes desde URL utilizando Glide
 
 ---
 
-# PANTALLAS MVP
+# PANTALLAS IMPLEMENTADAS
 
-El flujo principal del MVP es:
-
-Login -> Home -> Materias  
-Login -> Home -> Grupos
+El flujo actual de la aplicación incluye las siguientes pantallas:
 
 ## Login
-
 Pantalla de acceso inicial que presenta:
 
 * Interfaz centrada
 * Logo institucional
-* Botón de ingreso a la app
+* Campo email
+* Campo contraseña
+* Botón de ingreso a la aplicación
 
 ---
 
 ## Home
 
-Pantalla principal que permite el acceso a las funcionalidades del MVP a través de cards:
+Pantalla principal con menú de navegación que permite acceder a:
 
 * Materias
 * Grupos
+* Calendario
+* Novedades
+* Perfil
 
 ---
 
@@ -77,9 +80,12 @@ La pantalla Materias permite al usuario:
 
 * Visualizar las materias en las que está inscripto
 * Mostrar las materias dentro de un ScrollView
-* Agregar materias dinámicamente mediante un botón
+* Agregar nuevas materias dinámicamente
 
-La interacción del usuario genera cambios dinámicos en la pantalla, cumpliendo con el requisito de comportamiento dinámico.
+Agregar Materias
+
+* Formulario para carga de nueva materia
+* Generación dinámica de cards en la pantalla de materias
 
 ---
 
@@ -88,11 +94,36 @@ La interacción del usuario genera cambios dinámicos en la pantalla, cumpliendo
 La pantalla Grupos permite al usuario:
 
 * Visualizar el listado de grupos disponibles
-* Visualizar los grupos en los que se encuentra adherido
 * Identificar el estado de cada grupo (abierto/cerrado)
-* Crear nuevos grupos mediante un botón
+* Visualizar grupos propios
 
-En la pantalla 'Grupos', al presionar el botón 'Crear grupo', se genera dinámicamente una nueva card de grupo desde Java y se agrega al contenedor de grupos
+Agregar Grupos
+
+* Creación de nuevos grupos mediante formulario
+* Renderizado dinámico en la lista
+
+## Novedades
+
+* Visualización de novedades institucionales
+* Marcado de novedades como leídas
+* Contador dinámico de novedades pendientes
+* Uso de imágenes remotas con Glide
+
+## Calendario
+
+* Visualización de calendario
+* Visualización de parciales
+
+## Perfil
+
+* Imagen de perfil cargada desde URL
+* Visualización de datos del usuario
+
+Editar Perfil
+
+* Edición de información personal
+* Persistencia temporal mediante Repository
+* Actualización automática al volver a la pantalla de perfil
 
 ---
 # MOCKUPS
@@ -110,9 +141,28 @@ Pantallas incluidas:
 * Grupos de trabajo
 * Crear grupo
 * Fechas de parciales
-* Chat
-* Chat conversación
+* Novedades
 * Perfil
 * Editar perfil
 
 ---
+
+# ARQUITECTURA
+
+La aplicación utiliza una arquitecturabasada en:
+
+* Activities como controladores de UI
+* Repositorios en memoria para persistencia temporal
+* Modelos de datos
+
+Esto permite una implementación clara y alineada con los objetivos del MVP.
+
+# COMPORTAMIENTO DINÁMICO
+
+Se implementan múltiples comportamientos dinámicos:
+
+* Creación de materias, grupos y parciales desde Java
+* Actualización de UI en tiempo real
+* Eliminación de elementos mediante interacción del usuario
+* Estado de novedades (leídas / no leídas)
+* Actualización automática de datos al volver a pantalla (onResume)
