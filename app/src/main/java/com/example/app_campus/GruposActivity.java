@@ -59,8 +59,9 @@ public class GruposActivity extends AppCompatActivity {
             }
 
             if (itemId == R.id.nav_calendario) {
-                Toast.makeText(this, "Calendario en desarrollo", Toast.LENGTH_SHORT).show();
-                return false;
+                startActivity(new Intent(GruposActivity.this, CalendarioActivity.class));
+                finish();
+                return true;
             }
 
             if (itemId == R.id.nav_chat) {
@@ -70,8 +71,9 @@ public class GruposActivity extends AppCompatActivity {
             }
 
             if (itemId == R.id.nav_perfil) {
-                Toast.makeText(this, "Perfil en desarrollo", Toast.LENGTH_SHORT).show();
-                return false;
+                startActivity(new Intent(GruposActivity.this, PerfilActivity.class));
+                finish();
+                return true;
             }
 
             return false;
