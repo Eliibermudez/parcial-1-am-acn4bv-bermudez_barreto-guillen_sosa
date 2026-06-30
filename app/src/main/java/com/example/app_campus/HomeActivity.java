@@ -42,7 +42,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         btnAccesoCalendario.setOnClickListener(v -> {
-            Toast.makeText(this, "Calendario en desarrollo", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, CalendarioActivity.class);
+            startActivity(intent);
         });
 
         btnAccesoNovedades.setOnClickListener(v -> {

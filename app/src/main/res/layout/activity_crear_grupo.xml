@@ -138,15 +138,15 @@
 
             <Button
                 android:id="@+id/btnPublicarGrupo"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/button_height"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_button"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_button_pink"
                 android:backgroundTint="@null"
                 android:text="@string/publicar_grupo"
                 android:textAllCaps="false"
                 android:textColor="@color/textWhite"
-                android:textSize="@dimen/text_regular"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

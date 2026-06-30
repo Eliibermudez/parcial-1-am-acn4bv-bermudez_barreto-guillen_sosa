@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#4F46E5</color>
-    <color name="colorBackground">#F8F3FA</color>
+    <!-- Paleta principal Campus Estudiantil -->
+    <color name="colorPrimary">#2563EB</color>
+    <color name="colorPrimaryDark">#1D4ED8</color>
+    <color name="colorAccent">#38BDF8</color>
 
-    <color name="textPrimary">#222222</color>
-    <color name="textSecondary">#666666</color>
-    <color name="textMuted">#555555</color>
+    <color name="colorAccentTurquoise">#13D8B5</color>
+    <color name="colorAccentTurquoiseDark">#0F9F8A</color>
+    <color name="colorAccentPink">#E6007E</color>
+    <color name="colorAccentPinkLight">#FCE7F3</color>
+    <color name="colorAccentBlueLight">#DBEAFE</color>
+
+    <color name="colorBackground">#F6F8FC</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="cardBorder">#E2E8F0</color>
+
+    <color name="textPrimary">#1E293B</color>
+    <color name="textSecondary">#64748B</color>
+    <color name="textMuted">#94A3B8</color>
     <color name="textWhite">#FFFFFF</color>
 
-    <color name="colorTextButton">#FFFFFF</color>
+    <color name="colorSuccess">#16A34A</color>
+    <color name="colorDanger">#DC2626</color>
+    <color name="colorWarning">#F59E0B</color>
 
-    <color name="cardBackground">#FFFFFF</color>
-    <color name="cardBorder">#E1E4EA</color>
-
-    <color name="iconPurpleBackground">#EEE9FF</color>
-
-    <color name="colorSuccess">#2E7D32</color>
-    <color name="colorDanger">#C62828</color>
-
-    <color name="primary">#6200EE</color>
+    <color name="primary">#2563EB</color>
     <color name="white">#FFFFFF</color>
-    <color name="gray">#888888</color>
+    <color name="gray">#64748B</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="iconPurpleBackground">#DBEAFE</color>
+    <color name="colorTextButton">#FFFFFF</color>
 
 </resources>

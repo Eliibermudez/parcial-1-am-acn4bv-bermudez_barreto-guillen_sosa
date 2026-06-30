@@ -34,10 +34,11 @@
     <string name="mis_materias">Mis materias</string>
     <string name="grupos_trabajo">Grupos de trabajo</string>
 
-    <string name="icono_materias">📖</string>
-    <string name="icono_grupos">👥</string>
-    <string name="icono_calendario">📅</string>
-    <string name="icono_novedades">📢</string>
+    <string name="home_desc_materias">Consultá tus materias activas</string>
+    <string name="home_grupos_estudio">Grupos de estudio</string>
+    <string name="home_desc_grupos">Buscá o creá grupos para tus materias</string>
+    <string name="home_desc_calendario">Organizá entregas y fechas importantes</string>
+    <string name="home_desc_novedades">Revisá avisos académicos recientes</string>
 
     <!-- Pantalla Grupos -->
     <string name="titulo_grupos">Grupos de trabajo</string>

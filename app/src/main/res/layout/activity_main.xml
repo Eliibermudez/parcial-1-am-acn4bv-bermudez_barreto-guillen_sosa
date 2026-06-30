@@ -85,14 +85,15 @@
 
             <Button
                 android:id="@+id/btnIngresar"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/button_height"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_button"
                 android:backgroundTint="@null"
                 android:text="@string/ingresar"
                 android:textAllCaps="false"
                 android:textColor="@color/textWhite"
-                android:textSize="@dimen/text_regular"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView

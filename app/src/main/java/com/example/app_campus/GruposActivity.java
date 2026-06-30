@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -31,54 +30,6 @@ public class GruposActivity extends AppCompatActivity {
         ImageView btnBackGrupos = findViewById(R.id.btnBackGrupos);
         contenedorListaGrupos = findViewById(R.id.contenedorListaGrupos);
 
-        btnBackGrupos.setOnClickListener(v -> {
-            Intent intent = new Intent(GruposActivity.this, HomeActivity.class);
-            startActivity(intent);
-        });
-
-        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
-        bottomNavigation.setSelectedItemId(R.id.nav_grupos);
-
-        bottomNavigation.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-
-            if (itemId == R.id.nav_inicio) {
-                Intent intent = new Intent(GruposActivity.this, HomeActivity.class);
-                startActivity(intent);
-                return true;
-            }
-
-            if (itemId == R.id.nav_materias) {
-                Intent intent = new Intent(GruposActivity.this, MateriasActivity.class);
-                startActivity(intent);
-                return true;
-            }
-
-            if (itemId == R.id.nav_grupos) {
-                return true;
-            }
-
-            if (itemId == R.id.nav_calendario) {
-                startActivity(new Intent(GruposActivity.this, CalendarioActivity.class));
-                finish();
-                return true;
-            }
-
-            if (itemId == R.id.nav_chat) {
-                Intent intent = new Intent(GruposActivity.this, NovedadesActivity.class);
-                startActivity(intent);
-                return true;
-            }
-
-            if (itemId == R.id.nav_perfil) {
-                startActivity(new Intent(GruposActivity.this, PerfilActivity.class));
-                finish();
-                return true;
-            }
-
-            return false;
-        });
-
         TextView tabBuscarGrupos = findViewById(R.id.tabBuscarGrupos);
         TextView tabMisGrupos = findViewById(R.id.tabMisGrupos);
 
@@ -94,6 +45,11 @@ public class GruposActivity extends AppCompatActivity {
 
         configurarAccionGrupo(estadoGrupo1, btnUnirseGrupo1, detalleGrupo1, 2, cardGrupoBaseDatos);
 
+        btnBackGrupos.setOnClickListener(v -> {
+            Intent intent = new Intent(GruposActivity.this, HomeActivity.class);
+            startActivity(intent);
+        });
+
         tabBuscarGrupos.setOnClickListener(v -> {
             mostrandoMisGrupos = false;
             mostrarTodosLosGrupos();
@@ -107,6 +63,8 @@ public class GruposActivity extends AppCompatActivity {
             actualizarTextoBotonesSegunTab();
             actualizarTabs(tabMisGrupos, tabBuscarGrupos);
         });
+
+        actualizarTabs(tabBuscarGrupos, tabMisGrupos);
 
         crearGrupoLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -127,6 +85,50 @@ public class GruposActivity extends AppCompatActivity {
             Intent intent = new Intent(GruposActivity.this, CrearGrupoActivity.class);
             crearGrupoLauncher.launch(intent);
         });
+
+        configurarBottomNavigation();
+    }
+
+    private void configurarBottomNavigation() {
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+        bottomNavigation.setSelectedItemId(R.id.nav_grupos);
+
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_inicio) {
+                startActivity(new Intent(GruposActivity.this, HomeActivity.class));
+                return true;
+            }
+
+            if (itemId == R.id.nav_materias) {
+                startActivity(new Intent(GruposActivity.this, MateriasActivity.class));
+                return true;
+            }
+
+            if (itemId == R.id.nav_grupos) {
+                return true;
+            }
+
+            if (itemId == R.id.nav_calendario) {
+                startActivity(new Intent(GruposActivity.this, CalendarioActivity.class));
+                finish();
+                return true;
+            }
+
+            if (itemId == R.id.nav_chat) {
+                startActivity(new Intent(GruposActivity.this, NovedadesActivity.class));
+                return true;
+            }
+
+            if (itemId == R.id.nav_perfil) {
+                startActivity(new Intent(GruposActivity.this, PerfilActivity.class));
+                finish();
+                return true;
+            }
+
+            return false;
+        });
     }
 
     private void configurarAccionGrupo(TextView estadoGrupo, TextView btnUnirseGrupo, TextView detalleGrupo, int integrantesIniciales, LinearLayout cardGrupo) {
@@ -140,7 +142,7 @@ public class GruposActivity extends AppCompatActivity {
 
                 btnUnirseGrupo.setText(getString(R.string.ya_estas_grupo));
                 estadoGrupo.setText(getString(R.string.grupo_estado_integrante));
-                estadoGrupo.setTextColor(0xFF5B45D9);
+                estadoGrupo.setTextColor(getColor(R.color.colorAccentTurquoiseDark));
                 detalleGrupo.setText(obtenerTextoIntegrantes(integrantesFaltantes[0]));
 
                 cardGrupo.setTag(true);
@@ -148,12 +150,13 @@ public class GruposActivity extends AppCompatActivity {
                 if (mostrandoMisGrupos) {
                     btnUnirseGrupo.setText(getString(R.string.salir_grupo));
                 }
+
             } else if (textoBoton.equals(getString(R.string.salir_grupo))) {
                 integrantesFaltantes[0]++;
 
                 btnUnirseGrupo.setText(getString(R.string.unirme_grupo));
                 estadoGrupo.setText(getString(R.string.grupo_estado_abierto));
-                estadoGrupo.setTextColor(0xFF2E7D32);
+                estadoGrupo.setTextColor(getColor(R.color.colorSuccess));
                 detalleGrupo.setText(obtenerTextoIntegrantes(integrantesFaltantes[0]));
 
                 cardGrupo.setTag(false);
@@ -175,7 +178,6 @@ public class GruposActivity extends AppCompatActivity {
     private void mostrarSoloMisGrupos() {
         for (int i = 0; i < contenedorListaGrupos.getChildCount(); i++) {
             View card = contenedorListaGrupos.getChildAt(i);
-
             Object tag = card.getTag();
 
             if (tag instanceof Boolean && (Boolean) tag) {
@@ -236,12 +238,12 @@ public class GruposActivity extends AppCompatActivity {
     }
 
     private void actualizarTabs(TextView tabActivo, TextView tabInactivo) {
-        tabActivo.setBackgroundColor(0xFF5B45D9);
-        tabActivo.setTextColor(0xFFFFFFFF);
+        tabActivo.setBackgroundResource(R.drawable.bg_tab_selected);
+        tabActivo.setTextColor(getColor(R.color.colorPrimary));
         tabActivo.setTypeface(null, Typeface.BOLD);
 
-        tabInactivo.setBackgroundColor(0xFFFFFFFF);
-        tabInactivo.setTextColor(0xFF666666);
+        tabInactivo.setBackgroundResource(R.drawable.bg_tab_unselected);
+        tabInactivo.setTextColor(getColor(R.color.textSecondary));
         tabInactivo.setTypeface(null, Typeface.NORMAL);
     }
 
@@ -280,24 +282,24 @@ public class GruposActivity extends AppCompatActivity {
         TextView tituloGrupo = new TextView(this);
         tituloGrupo.setText(titulo);
         tituloGrupo.setTextSize(16);
-        tituloGrupo.setTextColor(0xFF222222);
+        tituloGrupo.setTextColor(getColor(R.color.textPrimary));
         tituloGrupo.setTypeface(null, Typeface.BOLD);
 
         TextView detalleGrupo = new TextView(this);
         detalleGrupo.setText(detalle);
         detalleGrupo.setTextSize(13);
-        detalleGrupo.setTextColor(0xFF555555);
+        detalleGrupo.setTextColor(getColor(R.color.textSecondary));
 
         TextView descripcionGrupo = new TextView(this);
         descripcionGrupo.setText(descripcion);
         descripcionGrupo.setTextSize(13);
-        descripcionGrupo.setTextColor(0xFF555555);
+        descripcionGrupo.setTextColor(getColor(R.color.textSecondary));
         descripcionGrupo.setPadding(0, dp(4), 0, 0);
 
         TextView estadoGrupo = new TextView(this);
         estadoGrupo.setText(getString(R.string.grupo_estado_abierto));
         estadoGrupo.setTextSize(12);
-        estadoGrupo.setTextColor(0xFF2E7D32);
+        estadoGrupo.setTextColor(getColor(R.color.colorSuccess));
         estadoGrupo.setTypeface(null, Typeface.BOLD);
         estadoGrupo.setGravity(android.view.Gravity.CENTER);
         estadoGrupo.setPadding(dp(18), dp(6), dp(18), dp(6));
@@ -306,7 +308,7 @@ public class GruposActivity extends AppCompatActivity {
         TextView btnUnirseGrupo = new TextView(this);
         btnUnirseGrupo.setText(getString(R.string.unirme_grupo));
         btnUnirseGrupo.setTextSize(12);
-        btnUnirseGrupo.setTextColor(0xFF666666);
+        btnUnirseGrupo.setTextColor(getColor(R.color.textSecondary));
         btnUnirseGrupo.setGravity(android.view.Gravity.CENTER);
         btnUnirseGrupo.setPadding(dp(18), dp(6), dp(18), dp(6));
         btnUnirseGrupo.setBackgroundResource(R.drawable.bg_chip_gray);

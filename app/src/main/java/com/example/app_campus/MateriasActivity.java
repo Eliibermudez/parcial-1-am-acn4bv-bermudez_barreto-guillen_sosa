@@ -3,8 +3,8 @@ package com.example.app_campus;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -102,47 +102,93 @@ public class MateriasActivity extends AppCompatActivity {
 
         LinearLayout filaTop = new LinearLayout(this);
         filaTop.setOrientation(LinearLayout.HORIZONTAL);
+        filaTop.setGravity(android.view.Gravity.CENTER_VERTICAL);
+
+        FrameLayout fondoIcono = new FrameLayout(this);
+        fondoIcono.setBackgroundResource(R.drawable.bg_icon_blue);
+
+        LinearLayout.LayoutParams lpFondoIcono = new LinearLayout.LayoutParams(
+                dp(44),
+                dp(44)
+        );
+        lpFondoIcono.setMargins(0, 0, dp(12), 0);
+        fondoIcono.setLayoutParams(lpFondoIcono);
 
         ImageView icon = new ImageView(this);
         icon.setImageResource(R.drawable.ic_book);
-        icon.setLayoutParams(new LinearLayout.LayoutParams(dp(40), dp(40)));
+        icon.setColorFilter(getColor(R.color.colorPrimary));
+
+        FrameLayout.LayoutParams lpIcono = new FrameLayout.LayoutParams(
+                dp(26),
+                dp(26),
+                android.view.Gravity.CENTER
+        );
+        icon.setLayoutParams(lpIcono);
+
+        fondoIcono.addView(icon);
 
         LinearLayout texto = new LinearLayout(this);
         texto.setOrientation(LinearLayout.VERTICAL);
-        texto.setPadding(dp(12), 0, 0, 0);
 
         TextView txtMateria = new TextView(this);
         txtMateria.setText(materia);
         txtMateria.setTypeface(null, Typeface.BOLD);
         txtMateria.setTextSize(16f);
+        txtMateria.setTextColor(getColor(R.color.textPrimary));
 
         TextView txtHorario = new TextView(this);
         txtHorario.setText(horario);
+        txtHorario.setTextSize(13f);
+        txtHorario.setTextColor(getColor(R.color.textSecondary));
 
         texto.addView(txtMateria);
         texto.addView(txtHorario);
 
-        filaTop.addView(icon);
+        filaTop.addView(fondoIcono);
         filaTop.addView(texto);
 
         TextView detalle = new TextView(this);
         detalle.setText(cuatri + " | " + comision + "\nDocente: " + docente);
-        detalle.setPadding(0, dp(8), 0, 0);
+        detalle.setTextSize(13f);
+        detalle.setTextColor(getColor(R.color.textSecondary));
+
+        LinearLayout.LayoutParams lpDetalle = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        lpDetalle.setMargins(dp(56), dp(8), 0, 0);
+        detalle.setLayoutParams(lpDetalle);
 
         // eliminar
         TextView btnEliminar = new TextView(this);
         btnEliminar.setText("Eliminar");
-        btnEliminar.setPadding(dp(12), dp(6), dp(12), dp(6));
-        btnEliminar.setBackgroundResource(R.drawable.bg_chip_gray);
-        btnEliminar.setTextColor(0xFFAA0000);
+        btnEliminar.setTextSize(12);
+        btnEliminar.setGravity(android.view.Gravity.CENTER);
+        btnEliminar.setPadding(dp(14), dp(6), dp(14), dp(6));
+        btnEliminar.setBackgroundResource(R.drawable.bg_chip_delete);
+        btnEliminar.setTextColor(getColor(R.color.colorDanger));
         btnEliminar.setTypeface(null, Typeface.BOLD);
+        btnEliminar.setClickable(true);
+        btnEliminar.setFocusable(true);
 
         LinearLayout.LayoutParams lpBtn = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
+                dp(32)
+        );
+        btnEliminar.setLayoutParams(lpBtn);
+
+        LinearLayout filaEliminar = new LinearLayout(this);
+        filaEliminar.setOrientation(LinearLayout.HORIZONTAL);
+        filaEliminar.setGravity(android.view.Gravity.END);
+
+        LinearLayout.LayoutParams lpFilaEliminar = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-        lpBtn.topMargin = dp(10);
-        btnEliminar.setLayoutParams(lpBtn);
+        lpFilaEliminar.topMargin = dp(10);
+        filaEliminar.setLayoutParams(lpFilaEliminar);
+
+        filaEliminar.addView(btnEliminar);
 
         btnEliminar.setOnClickListener(v -> {
             MateriasRepository.listaMaterias.removeIf(m ->
@@ -155,7 +201,7 @@ public class MateriasActivity extends AppCompatActivity {
 
         card.addView(filaTop);
         card.addView(detalle);
-        card.addView(btnEliminar);
+        card.addView(filaEliminar);
 
         contenedorMaterias.addView(card);
     }
@@ -216,6 +262,7 @@ public class MateriasActivity extends AppCompatActivity {
             if (id == R.id.nav_perfil) {
                 startActivity(new Intent(this, PerfilActivity.class));
                 finish();
+                return true;
             }
 
             return false;

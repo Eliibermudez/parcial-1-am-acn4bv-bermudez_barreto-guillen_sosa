@@ -1,9 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.AppCampus" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Colores principales de la app -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/textWhite</item>
+
+        <item name="colorSecondary">@color/colorAccentTurquoise</item>
+        <item name="colorOnSecondary">@color/textWhite</item>
+
+        <item name="colorTertiary">@color/colorAccentPink</item>
+        <item name="colorOnTertiary">@color/textWhite</item>
+
+        <!-- Fondo general -->
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/cardBackground</item>
+        <item name="colorOnSurface">@color/textPrimary</item>
+
+        <!-- Evita que Material le meta tint violeta a algunos botones -->
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="Theme.AppCampus" parent="Base.Theme.AppCampus" />
+
 </resources>
