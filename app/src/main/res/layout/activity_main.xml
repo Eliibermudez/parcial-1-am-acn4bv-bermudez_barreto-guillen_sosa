@@ -1,45 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/contenedorLogin"
+    <ScrollView
+        android:id="@+id/scrollLogin"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/padding_large"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:paddingStart="@dimen/margin_screen"
+        android:paddingEnd="@dimen/margin_screen"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
-            android:id="@+id/imgLogoCampus"
-            android:layout_width="@dimen/logo_size"
-            android:layout_height="@dimen/logo_size"
-            android:layout_marginBottom="@dimen/space_md"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/logo_campus"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logo_campus_estudiantil" />
+        <LinearLayout
+            android:id="@+id/contenedorLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnIngresar"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
-            android:layout_marginTop="@dimen/space_xl"
-            android:background="@drawable/bg_button"
-            android:elevation="@dimen/space_xs"
-            android:text="@string/ingresar"
-            android:textColor="@color/colorTextButton"
-            android:textSize="@dimen/text_regular"
-            android:textStyle="bold"/>
+            <ImageView
+                android:id="@+id/logoCampus"
+                android:layout_width="@dimen/logo_size"
+                android:layout_height="@dimen/logo_size"
+                android:layout_marginBottom="@dimen/space_lg"
+                android:contentDescription="@string/logo_campus"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo_campus_estudiantil" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/labelEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_email"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/inputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:layout_marginTop="@dimen/space_sm"
+                android:layout_marginBottom="@dimen/form_field_margin"
+                android:background="@drawable/bg_input"
+                android:hint="@string/login_email_hint"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/padding_small"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/text_regular" />
+
+            <TextView
+                android:id="@+id/labelPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_password"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/inputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:layout_marginTop="@dimen/space_sm"
+                android:layout_marginBottom="@dimen/space_lg"
+                android:background="@drawable/bg_input"
+                android:hint="@string/login_password_hint"
+                android:inputType="textPassword"
+                android:padding="@dimen/padding_small"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary"
+                android:textSize="@dimen/text_regular" />
+
+            <Button
+                android:id="@+id/btnIngresar"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@null"
+                android:text="@string/ingresar"
+                android:textAllCaps="false"
+                android:textColor="@color/textWhite"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDemoAcademica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:gravity="center"
+                android:text="@string/login_demo"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_small" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

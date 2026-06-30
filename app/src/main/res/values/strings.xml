@@ -1,12 +1,25 @@
 <resources>
-    <string name="app_name">Campus Estudiantil</string>
+    <!-- Login -->
     <string name="ingresar">Ingresar</string>
     <string name="logo_campus">Logo Campus</string>
+    <string name="app_name">Campus Estudiantil</string>
+
+    <string name="login_email">Email</string>
+    <string name="login_email_hint">ejemplo@campus.com</string>
+
+    <string name="login_password">Contraseña</string>
+    <string name="login_password_hint">Ingresá tu contraseña</string>
+
+    <string name="login_demo">Demo académica - acceso simulado</string>
+
+    <string name="login_error_campos">Completá email y contraseña</string>
+    <string name="login_error_email">Ingresá un email válido</string>
+    <string name="login_error_password">La contraseña debe tener al menos 4 caracteres</string>
+    <string name="login_exitoso">Ingreso exitoso</string>
 
     <!-- Home -->
-    <!-- Home -->
     <string name="titulo_home">Inicio</string>
-    <string name="home_bienvenida">¡Hola, estudiante!</string>
+    <string name="home_bienvenida">¡Hola!</string>
     <string name="home_subtitulo">Revisá tu cursada, grupos y novedades desde un solo lugar.</string>
 
     <string name="home_banner_categoria">Próxima entrega</string>
