@@ -59,28 +59,23 @@
                 android:padding="16dp">
 
                 <FrameLayout
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
                     android:layout_gravity="center">
 
                     <ImageView
+                        android:id="@+id/imgPerfil"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_person"
                         android:scaleType="centerCrop"/>
 
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="bottom|end"
-                        android:src="@drawable/ic_camera"/>
                 </FrameLayout>
 
                 <TextView
                     android:id="@+id/txtNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Juana Pérez"
+                    android:text="Juan Pérez"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_gravity="center"

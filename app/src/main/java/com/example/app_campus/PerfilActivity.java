@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.bumptech.glide.Glide;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,6 +43,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     //init views
     private void initViews() {
+        imgPerfil = findViewById(R.id.imgPerfil);
         txtNombre = findViewById(R.id.txtNombre);
         txtEmail = findViewById(R.id.txtEmail);
         txtTelefono = findViewById(R.id.txtTelefono);
@@ -49,6 +51,7 @@ public class PerfilActivity extends AppCompatActivity {
         txtComision = findViewById(R.id.txtComision);
         txtTurno = findViewById(R.id.txtTurno);
         btnEditar = findViewById(R.id.btnEditar);
+
     }
 
     //listeners
@@ -60,6 +63,7 @@ public class PerfilActivity extends AppCompatActivity {
         });
     }
 
+    ImageView imgPerfil;
     private void cargarDatos() {
 
         txtNombre.setText(PerfilRepository.nombre);
@@ -69,6 +73,13 @@ public class PerfilActivity extends AppCompatActivity {
         txtCarrera.setText(PerfilRepository.carrera);
         txtComision.setText(PerfilRepository.comision);
         txtTurno.setText(PerfilRepository.turno);
+
+        Glide.with(this)
+                .load("https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg")
+                .placeholder(R.drawable.bg_chip_gray)
+                .error(R.drawable.bg_chip_red)
+                .circleCrop()
+                .into(imgPerfil);
     }
 
     //nav
@@ -105,8 +116,9 @@ public class PerfilActivity extends AppCompatActivity {
             }
 
             if (id == R.id.nav_chat) {
-                Toast.makeText(this, "Chat en desarrollo", Toast.LENGTH_SHORT).show();
-                return false;
+                startActivity(new Intent(this, NovedadesActivity.class));
+                finish();
+                return true;
             }
 
             return id == R.id.nav_perfil;
