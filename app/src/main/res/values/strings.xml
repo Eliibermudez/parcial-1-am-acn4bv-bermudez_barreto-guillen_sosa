@@ -10,7 +10,7 @@
     <string name="login_password">Contraseña</string>
     <string name="login_password_hint">Ingresá tu contraseña</string>
 
-    <string name="login_demo">Demo académica - acceso simulado</string>
+    <string name="login_demo">Campus estudiantil - 2026</string>
 
     <string name="login_error_campos">Completá email y contraseña</string>
     <string name="login_error_email">Ingresá un email válido</string>
