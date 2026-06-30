@@ -22,29 +22,14 @@ public class CalendarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
 
-        //volver
+        // botón volver
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
 
-        //contenedor
+        // contenedor
         container = findViewById(R.id.containerParciales);
 
-        //botón agregar
-        ImageView btnAdd = findViewById(R.id.btnAdd);
-        btnAdd.setOnClickListener(v -> {
-
-            Parcial nuevo = new Parcial(
-                    "Nueva Materia",
-                    "15/05/2026 - 18hs",
-                    "Sin detalle",
-                    "#42A5F5"
-            );
-
-            ParcialesRepository.listaParciales.add(nuevo);
-            crearParcialDinamico(nuevo);
-        });
-
-
+        // datos
         if (ParcialesRepository.listaParciales.isEmpty()) {
 
             ParcialesRepository.listaParciales.add(
@@ -56,7 +41,7 @@ public class CalendarioActivity extends AppCompatActivity {
             );
         }
 
-        //navegación
+        // navegación
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
         bottomNavigation.setSelectedItemId(R.id.nav_calendario);
 
@@ -101,7 +86,7 @@ public class CalendarioActivity extends AppCompatActivity {
         });
     }
 
-    // render dinámico cada vez que vuelve a la pantalla
+    // render dinámico
     @Override
     protected void onResume() {
         super.onResume();
@@ -113,7 +98,7 @@ public class CalendarioActivity extends AppCompatActivity {
         }
     }
 
-    //crear card dinámica
+    // card dinámica
     private void crearParcialDinamico(Parcial p) {
 
         View card = LayoutInflater.from(this)
@@ -130,7 +115,7 @@ public class CalendarioActivity extends AppCompatActivity {
 
         dot.setBackgroundColor(Color.parseColor(p.color));
 
-        //eliminar
+        // eliminar con long press
         card.setOnLongClickListener(v -> {
             ParcialesRepository.listaParciales.remove(p);
             container.removeView(card);
