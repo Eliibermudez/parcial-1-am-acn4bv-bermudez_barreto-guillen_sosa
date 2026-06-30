@@ -1,7 +1,5 @@
 # CAMPUS ESTUDIANTIL - PARCIAL 2 APLICACIONES MÓVILES
-
 ---
-
 # INFORMACIÓN DE LAS ALUMNAS
 
 ## Alumnas
@@ -58,19 +56,22 @@ Pantalla de acceso inicial que presenta:
 * Logo institucional
 * Campo email
 * Campo contraseña
+* Validación simple de campos obligatorios
+* Validación básica de formato de email
 * Botón de ingreso a la aplicación
 
 ---
 
 ## Home
 
-Pantalla principal con menú de navegación que permite acceder a:
+Pantalla principal de la aplicación presenta:
 
-* Materias
-* Grupos
-* Calendario
-* Novedades
-* Perfil
+* Mensaje de bienvenida
+* Banner informativo
+* Accesos rápidos mediante cards visuales
+* Navegación hacia Materias, Grupos, Calendario y Novedades
+* Resumen de actividad académica
+* BottomNavigationView para acceder a las secciones principales
 
 ---
 
@@ -81,6 +82,7 @@ La pantalla Materias permite al usuario:
 * Visualizar las materias en las que está inscripto
 * Mostrar las materias dentro de un ScrollView
 * Agregar nuevas materias dinámicamente
+* Eliminar materias de la lista
 
 Agregar Materias
 
@@ -132,6 +134,9 @@ Los mockups de las pantallas se encuentran en la carpeta:
 
 docs/mockups
 
+Estos mockups fueron utilizados como referencia visual y funcional durante la primera etapa del desarrollo
+Durante la implementación se realizaron ajustes de diseño, paleta de colores y estructura de algunas pantallas para mejorar la experiencia de usuario y adaptar la aplicación al resultado final
+
 Pantallas incluidas:
 
 * Login
@@ -145,11 +150,40 @@ Pantallas incluidas:
 * Perfil
 * Editar perfil
 
+Aclaración: en los mockups iniciales se había planteado una pantalla de Chat. Durante el desarrollo, esta funcionalidad fue redefinida como Novedades, ya que resultaba más adecuada para el alcance del proyecto y permitía incorporar avisos institucionales, contador dinámico e imagen remota mediante Glide
+
+---
+
+# CAPTURAS DE LA APP FINAL
+
+Además de los mockups iniciales, se incluyen capturas de la aplicación final implementada en Android Studio dentro de la carpeta:
+
+docs/screenshots
+
+Estas capturas permiten visualizar el resultado final de las pantallas, incluyendo los cambios aplicados en la paleta de colores, accesos rápidos, navegación inferior, cards dinámicas y componentes visuales
+
+---
+# FLUJO DE NAVEGACIÓN
+
+El flujo principal de la aplicación es:
+
+Login -> Home
+
+Desde Home el usuario puede acceder a:
+
+* Materias
+* Grupos
+* Calendario
+* Novedades
+* Perfil
+
+Además, la aplicación cuenta con una BottomNavigationView que permite navegar entre las secciones principales desde distintas pantallas
+
 ---
 
 # ARQUITECTURA
 
-La aplicación utiliza una arquitecturabasada en:
+La aplicación utiliza una arquitectura basada en:
 
 * Activities como controladores de UI
 * Repositorios en memoria para persistencia temporal
