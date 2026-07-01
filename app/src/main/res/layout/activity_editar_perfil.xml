@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Editar perfil"
+            android:text="@string/editar_perfil_titulo"
             android:textColor="@color/textWhite"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre"
+                android:text="@string/nombre_editar_perfil"
                 android:textColor="@color/textPrimary"
                 android:textStyle="bold"/>
 
@@ -62,7 +62,7 @@
                 android:layout_marginTop="@dimen/space_sm"
                 android:layout_marginBottom="@dimen/form_field_margin"
                 android:background="@drawable/bg_input"
-                android:hint="Ingresar tu nombre o usuario"
+                android:hint="@string/ingresar_tu_nombre_editar_perfil"
                 android:inputType="text"
                 android:padding="@dimen/padding_small"
                 android:textColor="@color/textPrimary"
@@ -72,7 +72,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Teléfono"
+                android:text="@string/telefono_editar_perfil"
                 android:textColor="@color/textPrimary"
                 android:textStyle="bold"/>
 
@@ -83,7 +83,7 @@
                 android:layout_marginTop="@dimen/space_sm"
                 android:layout_marginBottom="@dimen/form_field_margin"
                 android:background="@drawable/bg_input"
-                android:hint="Ingresa tu número de contacto"
+                android:hint="@string/numero_de_contacto_editar_perfil"
                 android:inputType="phone"
                 android:padding="@dimen/padding_small"
                 android:textColor="@color/textPrimary"
@@ -93,7 +93,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
+                android:text="@string/email_editar_perfil"
                 android:textColor="@color/textPrimary"
                 android:textStyle="bold"/>
 
@@ -104,7 +104,7 @@
                 android:layout_marginTop="@dimen/space_sm"
                 android:layout_marginBottom="@dimen/form_field_margin"
                 android:background="@drawable/bg_input"
-                android:hint="Ingresa tu email"
+                android:hint="@string/ingresa_tu_email_editar_perfil"
                 android:inputType="textEmailAddress"
                 android:padding="@dimen/padding_small"
                 android:textColor="@color/textPrimary"
@@ -114,7 +114,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Carrera"
+                android:text="@string/carrera_editar_perfil"
                 android:textColor="@color/textPrimary"
                 android:textStyle="bold"/>
 
@@ -128,7 +128,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comisión"
+                android:text="@string/comision_editar_perfil"
                 android:textColor="@color/textPrimary"
                 android:textStyle="bold"/>
 
@@ -142,7 +142,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Turno"
+                android:text="@string/turno_editar_perfil"
                 android:textColor="@color/textPrimary"
                 android:textStyle="bold"/>
 

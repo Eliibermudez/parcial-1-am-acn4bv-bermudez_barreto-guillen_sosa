@@ -18,7 +18,7 @@
             android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Materia"
+            android:text="@string/materia_item"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
@@ -26,7 +26,7 @@
             android:id="@+id/txtProfesor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profesor"
+            android:text="@string/profesor_item"
             android:textSize="14sp"/>
 
     </LinearLayout>

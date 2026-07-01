@@ -23,7 +23,7 @@
             android:id="@+id/txtMateria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Materia"
+            android:text="@string/materia_item_parcial"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/textPrimary"/>
@@ -32,14 +32,14 @@
             android:id="@+id/txtFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="06/05/2026 - 19hs"
+            android:text="@string/fecha_item_parcial"
             android:textColor="@color/textSecondary"/>
 
         <TextView
             android:id="@+id/txtDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acceso a meet"
+            android:text="@string/acceso__item_parcial"
             android:textColor="@color/textMuted"/>
 
     </LinearLayout>

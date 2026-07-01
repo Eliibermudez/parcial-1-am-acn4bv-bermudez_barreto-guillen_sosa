@@ -75,7 +75,7 @@
                     android:id="@+id/txtNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Juan Pérez"
+                    android:text="@string/usuario_perfil"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_gravity="center"
@@ -85,7 +85,7 @@
                     android:id="@+id/txtEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="juan.perez@davinci.edu.ar"
+                    android:text="@string/email_perfil"
                     android:textColor="@color/textSecondary"
                     android:layout_gravity="center"/>
 
@@ -99,51 +99,51 @@
                         android:id="@+id/txtCarrera"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Analista de Sistemas"/>
+                        android:text="@string/carrera_perfil"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Carrera"
+                        android:text="@string/carrera_texto_perfil"
                         android:textColor="@color/textSecondary"/>
 
                     <TextView
                         android:id="@+id/txtComision"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ACN4BV"
+                        android:text="@string/comision_perfil"
                         android:layout_marginTop="8dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Comisión"
+                        android:text="@string/comision_texto_perfil"
                         android:textColor="@color/textSecondary"/>
 
                     <TextView
                         android:id="@+id/txtTurno"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Noche"
+                        android:text="@string/turno_perfil"
                         android:layout_marginTop="8dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Turno"
+                        android:text="@string/turno_texto_perfil"
                         android:textColor="@color/textSecondary"/>
 
                     <TextView
                         android:id="@+id/txtTelefono"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+11 5555-5555"
+                        android:text="@string/telefono_perfil"
                         android:layout_marginTop="8dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Teléfono"
+                        android:text="@string/telefono_texto_perfil"
                         android:textColor="@color/textSecondary"/>
 
                 </LinearLayout>

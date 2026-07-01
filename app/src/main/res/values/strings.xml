@@ -69,6 +69,11 @@
     <string name="horario_2">Miércoles de 19:00 a 20:50</string>
     <string name="profesor_2">Pablo Medina</string>
 
+
+    <!-- Item Materias -->
+    <string name="materia_item">Materia</string>
+    <string name="profesor_item">Profesor</string>
+
     <!-- Menu -->
     <string name="menu_inicio">Inicio</string>
     <string name="menu_materias">Materias</string>
@@ -120,8 +125,41 @@
     <string name="banner_novedades_imagen">Imagen destacada de novedades académicas</string>
     <string name="fechas_de_parciales">Fechas de parciales</string>
     <string name="fechas_parciales">Fechas de Parciales</string>
+
+    <!-- Calendario -->
+
+    <string name="materia_item_parcial">Materia</string>
+    <string name="fecha_item_parcial">06/05/2026 - 19hs</string>
+    <string name="acceso__item_parcial">Acceso a meet</string>
+
+
+    <!-- Perfil -->
+
+    <string name="usuario_perfil">Juan Pérez</string>
+    <string name="email_perfil">juan.perez@davinci.edu.ar</string>
+    <string name="carrera_perfil">Analista de Sistemas</string>
+    <string name="carrera_texto_perfil">Carrera</string>
+    <string name="comision_perfil">ACN4BV</string>
+    <string name="comision_texto_perfil">Comisión</string>
+    <string name="turno_perfil">Noche</string>
+    <string name="turno_texto_perfil">Turno</string>
+    <string name="telefono_perfil">+11 5555-5555</string>
+    <string name="telefono_texto_perfil">Teléfono</string>
+
+    <!-- Editar Perfil -->
+
     <string name="mi_perfil">Mi perfil</string>
     <string name="editar_perfil">Editar perfil</string>
     <string name="guardar_cambios">Guardar cambios</string>
+    <string name="editar_perfil_titulo">Editar perfil</string>
+    <string name="nombre_editar_perfil">Nombre</string>
+    <string name="ingresar_tu_nombre_editar_perfil">Ingresar tu nombre o usuario</string>
+    <string name="telefono_editar_perfil">Teléfono</string>
+    <string name="numero_de_contacto_editar_perfil">Ingresa tu número de contacto</string>
+    <string name="email_editar_perfil">Email</string>
+    <string name="ingresa_tu_email_editar_perfil">Ingresa tu email</string>
+    <string name="carrera_editar_perfil">Carrera</string>
+    <string name="comision_editar_perfil">Comisión</string>
+    <string name="turno_editar_perfil">Turno</string>
 
 </resources>
