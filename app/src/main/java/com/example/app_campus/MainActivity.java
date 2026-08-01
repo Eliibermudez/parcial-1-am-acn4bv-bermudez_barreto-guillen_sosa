@@ -10,12 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText inputEmail;
     private EditText inputPassword;
     private Button btnIngresar;
+    private TextView txtIrRegistro;
 
     private FirebaseAuth firebaseAuth;
 
@@ -31,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         btnIngresar.setOnClickListener(v -> validarLogin());
+        txtIrRegistro = findViewById(R.id.txtIrRegistro);
+
+        txtIrRegistro.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override

@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +23,7 @@ public class PerfilActivity extends AppCompatActivity {
     private ImageView imgPerfil;
 
     private FirebaseFirestore db;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class PerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 
         db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         ImageView btnBack = findViewById(R.id.btnBack);
 
@@ -90,15 +94,24 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
     private void cargarDatosDesdeFirestore() {
+        FirebaseUser usuarioActual = firebaseAuth.getCurrentUser();
+
+        if (usuarioActual == null) {
+            Toast.makeText(this, "No hay usuario logueado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String uid = usuarioActual.getUid();
+
         db.collection("usuarios")
-                .document("estudiante_demo")
+                .document(uid)
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
                         mostrarDatosFirestore(documentSnapshot);
                         Toast.makeText(this, "Datos cargados desde Firestore", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(this, "No se encontró el perfil en Firestore", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "No se encontró el perfil del usuario", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(e -> {
