@@ -161,5 +161,6 @@
     <string name="carrera_editar_perfil">Carrera</string>
     <string name="comision_editar_perfil">Comisión</string>
     <string name="turno_editar_perfil">Turno</string>
+    <string name="contacto">Contacto</string>
 
 </resources>

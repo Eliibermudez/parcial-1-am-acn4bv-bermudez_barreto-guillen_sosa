@@ -18,6 +18,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private LinearLayout btnAccesoPerfil;
 
+    private LinearLayout btnAccesoContacto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,11 @@ public class HomeActivity extends AppCompatActivity {
 
         btnAccesoNovedades.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, NovedadesActivity.class);
+            startActivity(intent);
+        });
+
+        btnAccesoContacto.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ContactoActivity.class);
             startActivity(intent);
         });
 
