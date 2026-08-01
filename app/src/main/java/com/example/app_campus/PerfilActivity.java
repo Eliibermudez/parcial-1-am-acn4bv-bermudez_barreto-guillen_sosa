@@ -6,21 +6,28 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 public class PerfilActivity extends AppCompatActivity {
 
-    TextView txtNombre, txtEmail, txtCarrera, txtComision, txtTurno, txtTelefono;
-    Button btnEditar;
+    private TextView txtNombre, txtEmail, txtCarrera, txtComision, txtTurno, txtTelefono;
+    private Button btnEditar;
+    private ImageView imgPerfil;
+
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
+        db = FirebaseFirestore.getInstance();
 
         ImageView btnBack = findViewById(R.id.btnBack);
 
@@ -41,7 +48,7 @@ public class PerfilActivity extends AppCompatActivity {
         cargarDatos();
     }
 
-    //init views
+    // init views
     private void initViews() {
         imgPerfil = findViewById(R.id.imgPerfil);
         txtNombre = findViewById(R.id.txtNombre);
@@ -51,25 +58,25 @@ public class PerfilActivity extends AppCompatActivity {
         txtComision = findViewById(R.id.txtComision);
         txtTurno = findViewById(R.id.txtTurno);
         btnEditar = findViewById(R.id.btnEditar);
-
     }
 
-    //listeners
+    // listeners
     private void initListeners() {
-
         btnEditar.setOnClickListener(v -> {
             Intent intent = new Intent(this, EditarPerfilActivity.class);
             startActivity(intent);
         });
     }
 
-    ImageView imgPerfil;
     private void cargarDatos() {
+        cargarDatosLocales();
+        cargarDatosDesdeFirestore();
+    }
 
+    private void cargarDatosLocales() {
         txtNombre.setText(PerfilRepository.nombre);
         txtEmail.setText(PerfilRepository.email);
         txtTelefono.setText(PerfilRepository.telefono);
-
         txtCarrera.setText(PerfilRepository.carrera);
         txtComision.setText(PerfilRepository.comision);
         txtTurno.setText(PerfilRepository.turno);
@@ -82,9 +89,74 @@ public class PerfilActivity extends AppCompatActivity {
                 .into(imgPerfil);
     }
 
-    //nav
-    private void setupBottomNav() {
+    private void cargarDatosDesdeFirestore() {
+        db.collection("usuarios")
+                .document("estudiante_demo")
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        mostrarDatosFirestore(documentSnapshot);
+                        Toast.makeText(this, "Datos cargados desde Firestore", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "No se encontró el perfil en Firestore", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error al cargar datos de Firestore", Toast.LENGTH_SHORT).show();
+                });
+    }
 
+    private void mostrarDatosFirestore(DocumentSnapshot documentSnapshot) {
+        String nombre = documentSnapshot.getString("nombre");
+        String email = documentSnapshot.getString("email");
+        String telefono = documentSnapshot.getString("telefono");
+        String carrera = documentSnapshot.getString("carrera");
+        String comision = documentSnapshot.getString("comision");
+        String turno = documentSnapshot.getString("turno");
+        String imagenUrl = documentSnapshot.getString("imagenUrl");
+
+        if (nombre != null) {
+            txtNombre.setText(nombre);
+            PerfilRepository.nombre = nombre;
+        }
+
+        if (email != null) {
+            txtEmail.setText(email);
+            PerfilRepository.email = email;
+        }
+
+        if (telefono != null) {
+            txtTelefono.setText(telefono);
+            PerfilRepository.telefono = telefono;
+        }
+
+        if (carrera != null) {
+            txtCarrera.setText(carrera);
+            PerfilRepository.carrera = carrera;
+        }
+
+        if (comision != null) {
+            txtComision.setText(comision);
+            PerfilRepository.comision = comision;
+        }
+
+        if (turno != null) {
+            txtTurno.setText(turno);
+            PerfilRepository.turno = turno;
+        }
+
+        if (imagenUrl != null && !imagenUrl.isEmpty()) {
+            Glide.with(this)
+                    .load(imagenUrl)
+                    .placeholder(R.drawable.bg_chip_gray)
+                    .error(R.drawable.bg_chip_red)
+                    .circleCrop()
+                    .into(imgPerfil);
+        }
+    }
+
+    // nav
+    private void setupBottomNav() {
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
         bottomNavigation.setSelectedItemId(R.id.nav_perfil);
 

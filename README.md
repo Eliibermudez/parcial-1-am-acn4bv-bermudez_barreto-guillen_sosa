@@ -23,6 +23,10 @@ Aplicación móvil desarrollada en Android que permite a los estudiantes gestion
 
 ---
 
+# CREDENCIALES TEST 
+  - Email: juan@gmail.com 
+  - Contraseña: 1234  
+
 # CONCEPTOS APLICADOS
 
 El proyecto implementa:
@@ -60,6 +64,8 @@ Pantalla de acceso inicial que presenta:
 * Validación básica de formato de email
 * Botón de ingreso a la aplicación
 
+<img width="300" src="https://github.com/user-attachments/assets/f117d997-2229-41db-b6bc-0c3280caeb18" />
+
 ---
 
 ## Home
@@ -73,6 +79,8 @@ Pantalla principal de la aplicación presenta:
 * Resumen de actividad académica
 * BottomNavigationView para acceder a las secciones principales
 
+<img width="300" src="https://github.com/user-attachments/assets/4968a2bc-62ca-4c4b-b959-1196941ae9fd" />
+
 ---
 
 ## Materias
@@ -84,10 +92,15 @@ La pantalla Materias permite al usuario:
 * Agregar nuevas materias dinámicamente
 * Eliminar materias de la lista
 
+<img width="300" src="https://github.com/user-attachments/assets/00bcd448-e777-4169-a46d-9c947376356e" />
+
+
 Agregar Materias
 
 * Formulario para carga de nueva materia
 * Generación dinámica de cards en la pantalla de materias
+
+<img width="300" src="https://github.com/user-attachments/assets/6ff96aba-a2db-4bb9-9bee-6d86ed4d4e22" />
 
 ---
 
@@ -98,11 +111,17 @@ La pantalla Grupos permite al usuario:
 * Visualizar el listado de grupos disponibles
 * Identificar el estado de cada grupo (abierto/cerrado)
 * Visualizar grupos propios
+  
+<img width="300" src="https://github.com/user-attachments/assets/2b7d5e13-1b03-44d4-801e-f43f2e4e1db6" />
+
+<img width="300" src="https://github.com/user-attachments/assets/348d42c9-7b15-44ba-b0f7-fa5361769867" />
 
 Agregar Grupos
 
 * Creación de nuevos grupos mediante formulario
 * Renderizado dinámico en la lista
+  
+<img width="300" src="https://github.com/user-attachments/assets/6e34933f-8daa-46cc-8486-2c7e289a316d" />
 
 ## Novedades
 
@@ -111,21 +130,29 @@ Agregar Grupos
 * Contador dinámico de novedades pendientes
 * Uso de imágenes remotas con Glide
 
+<img width="300" src="https://github.com/user-attachments/assets/6e674dbb-98a7-4da0-add9-d1bc4b7c7ebf" />
+
 ## Calendario
 
 * Visualización de calendario
 * Visualización de parciales
 
+<img width="300" src="https://github.com/user-attachments/assets/6989a215-bea3-4050-b1ed-b37c31340800" />
+
 ## Perfil
 
 * Imagen de perfil cargada desde URL
 * Visualización de datos del usuario
+  
+<img width="300" src="https://github.com/user-attachments/assets/c7f65323-000e-40c2-b6ba-b555e7f7023d" />
 
 Editar Perfil
 
 * Edición de información personal
 * Persistencia temporal mediante Repository
 * Actualización automática al volver a la pantalla de perfil
+
+<img width="300" src="https://github.com/user-attachments/assets/1f26304a-8264-4bdf-89ee-4b6d91d80d93" />
 
 ---
 # MOCKUPS

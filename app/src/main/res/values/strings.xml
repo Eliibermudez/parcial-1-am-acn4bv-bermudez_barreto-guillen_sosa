@@ -12,10 +12,14 @@
 
     <string name="login_demo">Campus estudiantil - 2026</string>
 
+    <string name="login_cargando">Ingresando...</string>
+    <string name="login_error_password_firebase">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="login_error_firebase">No se pudo iniciar sesión. Revisá el email y la contraseña</string>
+    <string name="login_exitoso">Ingreso exitoso</string>
+
     <string name="login_error_campos">Completá email y contraseña</string>
     <string name="login_error_email">Ingresá un email válido</string>
     <string name="login_error_password">La contraseña debe tener al menos 4 caracteres</string>
-    <string name="login_exitoso">Ingreso exitoso</string>
 
     <!-- Home -->
     <string name="titulo_home">Inicio</string>
@@ -68,7 +72,6 @@
     <string name="horario_1">Miércoles de 19:00 a 20:50</string>
     <string name="horario_2">Miércoles de 19:00 a 20:50</string>
     <string name="profesor_2">Pablo Medina</string>
-
 
     <!-- Item Materias -->
     <string name="materia_item">Materia</string>
@@ -131,7 +134,6 @@
     <string name="materia_item_parcial">Materia</string>
     <string name="fecha_item_parcial">06/05/2026 - 19hs</string>
     <string name="acceso__item_parcial">Acceso a meet</string>
-
 
     <!-- Perfil -->
 
