@@ -58,64 +58,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/bannerNovedades"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="160dp"
-                android:layout_marginBottom="@dimen/space_lg"
-                android:background="@drawable/bg_banner_novedades"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:padding="@dimen/padding_large">
-
-                <ImageView
-                    android:id="@+id/imgBannerNovedades"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginBottom="@dimen/space_sm"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/banner_novedades_imagen" />
-                <TextView
-                    android:id="@+id/txtBannerCategoria"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_chip_gray"
-                    android:paddingStart="14dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="14dp"
-                    android:paddingBottom="5dp"
-                    android:text="@string/banner_novedades_categoria"
-                    android:textColor="@color/textSecondary"
-                    android:textSize="@dimen/text_small"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtBannerTitulo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_sm"
-                    android:text="@string/banner_novedades_titulo"
-                    android:textColor="@color/textWhite"
-                    android:textSize="@dimen/text_large"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtBannerDescripcion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_xs"
-                    android:text="@string/banner_novedades_descripcion"
-                    android:textColor="@color/textWhite"
-                    android:textSize="@dimen/text_medium" />
-
-            </LinearLayout>
+            <!-- Este ImageView queda oculto para no romper el Java si todavía lo referencia -->
+            <ImageView
+                android:id="@+id/imgBannerNovedades"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:visibility="gone"
+                android:contentDescription="@string/banner_novedades_imagen" />
 
             <TextView
                 android:id="@+id/txtNovedadesRecientes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/space_md"
                 android:text="@string/novedades_recientes"
                 android:textColor="@color/textPrimary"
                 android:textSize="@dimen/text_large"
@@ -125,12 +79,14 @@
                 android:id="@+id/txtResumenNovedades"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
                 android:layout_marginBottom="@dimen/space_md"
                 android:text="@string/resumen_novedades_pendientes"
                 android:textColor="@color/textSecondary"
                 android:textSize="@dimen/text_regular"
                 android:textStyle="bold" />
 
+            <!-- Card novedad 1 -->
             <LinearLayout
                 android:id="@+id/cardNovedad1"
                 android:layout_width="match_parent"
@@ -139,6 +95,14 @@
                 android:background="@drawable/bg_card"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_card">
+
+                <ImageView
+                    android:id="@+id/imgNovedad1"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="@dimen/space_sm"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Imagen de novedad" />
 
                 <TextView
                     android:id="@+id/categoriaNovedad1"
@@ -187,6 +151,7 @@
 
             </LinearLayout>
 
+            <!-- Card novedad 2 -->
             <LinearLayout
                 android:id="@+id/cardNovedad2"
                 android:layout_width="match_parent"
@@ -195,6 +160,14 @@
                 android:background="@drawable/bg_card"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_card">
+
+                <ImageView
+                    android:id="@+id/imgNovedad2"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="@dimen/space_sm"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Imagen de novedad" />
 
                 <TextView
                     android:id="@+id/categoriaNovedad2"
@@ -243,6 +216,7 @@
 
             </LinearLayout>
 
+            <!-- Card novedad 3 -->
             <LinearLayout
                 android:id="@+id/cardNovedad3"
                 android:layout_width="match_parent"
@@ -251,6 +225,14 @@
                 android:background="@drawable/bg_card"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_card">
+
+                <ImageView
+                    android:id="@+id/imgNovedad3"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="@dimen/space_sm"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Imagen de novedad" />
 
                 <TextView
                     android:id="@+id/categoriaNovedad3"

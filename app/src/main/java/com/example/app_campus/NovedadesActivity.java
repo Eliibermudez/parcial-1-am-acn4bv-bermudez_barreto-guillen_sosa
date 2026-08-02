@@ -2,17 +2,20 @@ package com.example.app_campus;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.bumptech.glide.Glide;
-import android.view.Gravity;
-import android.view.MenuItem;
-import android.widget.PopupMenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
 
 public class NovedadesActivity extends AppCompatActivity {
 
@@ -22,11 +25,24 @@ public class NovedadesActivity extends AppCompatActivity {
 
     private TextView txtResumenNovedades;
 
+    private TextView categoriaNovedad1, categoriaNovedad2, categoriaNovedad3;
+    private TextView tituloNovedad1, tituloNovedad2, tituloNovedad3;
+    private TextView descripcionNovedad1, descripcionNovedad2, descripcionNovedad3;
+
+    private ImageView imgBannerNovedades;
+
+    private ImageView imgNovedad1, imgNovedad2, imgNovedad3;
+
+    private FirebaseFirestore db;
+
+    private final String imagenBannerDefault = "https://images.pexels.com/photos/5965923/pexels-photo-5965923.jpeg";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novedades);
 
+        db = FirebaseFirestore.getInstance();
 
         ImageView btnBackNovedades = findViewById(R.id.btnBackNovedades);
 
@@ -36,20 +52,29 @@ public class NovedadesActivity extends AppCompatActivity {
 
         txtResumenNovedades = findViewById(R.id.txtResumenNovedades);
 
-        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+        imgBannerNovedades = findViewById(R.id.imgBannerNovedades);
+        imgNovedad1 = findViewById(R.id.imgNovedad1);
+        imgNovedad2 = findViewById(R.id.imgNovedad2);
+        imgNovedad3 = findViewById(R.id.imgNovedad3);
 
-        ImageView imgBannerNovedades = findViewById(R.id.imgBannerNovedades);
+        categoriaNovedad1 = findViewById(R.id.categoriaNovedad1);
+        categoriaNovedad2 = findViewById(R.id.categoriaNovedad2);
+        categoriaNovedad3 = findViewById(R.id.categoriaNovedad3);
 
-        Glide.with(this)
-                .load("https://images.pexels.com/photos/5965923/pexels-photo-5965923.jpeg?_gl=1*1iyo4gu*_ga*MTI2ODc2MDYwMi4xNzgyNzAyNDUw*_ga_8JE65Q40S6*czE3ODI3MDI0NTAkbzEkZzEkdDE3ODI3MDQwNDckajQ2JGwwJGgw")
-                .placeholder(R.drawable.bg_chip_gray)
-                .error(R.drawable.bg_chip_red)
-                .centerCrop()
-                .into(imgBannerNovedades);
+        tituloNovedad1 = findViewById(R.id.tituloNovedad1);
+        tituloNovedad2 = findViewById(R.id.tituloNovedad2);
+        tituloNovedad3 = findViewById(R.id.tituloNovedad3);
+
+        descripcionNovedad1 = findViewById(R.id.descripcionNovedad1);
+        descripcionNovedad2 = findViewById(R.id.descripcionNovedad2);
+        descripcionNovedad3 = findViewById(R.id.descripcionNovedad3);
+
+        cargarImagenBanner(imagenBannerDefault);
 
         btnBackNovedades.setOnClickListener(v -> {
             Intent intent = new Intent(NovedadesActivity.this, HomeActivity.class);
             startActivity(intent);
+            finish();
         });
 
         configurarBotonLeida(btnLeidaNovedad1, 1);
@@ -57,7 +82,93 @@ public class NovedadesActivity extends AppCompatActivity {
         configurarBotonLeida(btnLeidaNovedad3, 3);
 
         actualizarResumenNovedades();
+
+        cargarNovedadesDesdeFirestore();
+
         configurarBottomNav();
+    }
+
+    private void cargarImagenBanner(String imagenUrl) {
+        Glide.with(this)
+                .load(imagenUrl)
+                .placeholder(R.drawable.bg_chip_gray)
+                .error(R.drawable.bg_chip_red)
+                .centerCrop()
+                .into(imgBannerNovedades);
+    }
+
+    private void cargarImagenNovedad(ImageView imageView, String imagenUrl) {
+        Glide.with(this)
+                .load(imagenUrl)
+                .placeholder(R.drawable.bg_chip_gray)
+                .error(R.drawable.bg_chip_red)
+                .centerCrop()
+                .into(imageView);
+    }
+
+    private void cargarNovedadesDesdeFirestore() {
+        db.collection("novedades")
+                .limit(3)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    List<DocumentSnapshot> documentos = queryDocumentSnapshots.getDocuments();
+
+                    if (documentos.isEmpty()) {
+                        Toast.makeText(this, "No hay novedades cargadas", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    for (int i = 0; i < documentos.size(); i++) {
+                        DocumentSnapshot documento = documentos.get(i);
+
+                        String titulo = obtenerTexto(documento, "titulo");
+                        String descripcion = obtenerTexto(documento, "descripcion");
+                        String categoria = obtenerTexto(documento, "categoria");
+                        String imagenUrl = obtenerTexto(documento, "imagenUrl");
+
+                        cargarNovedadEnCard(i + 1, categoria, titulo, descripcion, imagenUrl);
+
+                        if (i == 0 && !imagenUrl.isEmpty()) {
+                            cargarImagenBanner(imagenUrl);
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error al cargar novedades", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void cargarNovedadEnCard(int numero, String categoria, String titulo, String descripcion, String imagenUrl) {
+        if (numero == 1) {
+            categoriaNovedad1.setText(categoria);
+            tituloNovedad1.setText(titulo);
+            descripcionNovedad1.setText(descripcion);
+            cargarImagenNovedad(imgNovedad1, imagenUrl);
+        }
+
+        if (numero == 2) {
+            categoriaNovedad2.setText(categoria);
+            tituloNovedad2.setText(titulo);
+            descripcionNovedad2.setText(descripcion);
+            cargarImagenNovedad(imgNovedad2, imagenUrl);
+        }
+
+        if (numero == 3) {
+            categoriaNovedad3.setText(categoria);
+            tituloNovedad3.setText(titulo);
+            descripcionNovedad3.setText(descripcion);
+            cargarImagenNovedad(imgNovedad3, imagenUrl);
+        }
+    }
+
+    private String obtenerTexto(DocumentSnapshot documentSnapshot, String campo) {
+        Object valor = documentSnapshot.get(campo);
+
+        if (valor == null) {
+            return "";
+        }
+
+        return String.valueOf(valor);
     }
 
     private void configurarBotonLeida(TextView boton, int numeroNovedad) {
@@ -127,81 +238,47 @@ public class NovedadesActivity extends AppCompatActivity {
     }
 
     private void configurarBottomNav() {
-
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
 
-        bottomNavigation.setSelectedItemId(R.id.nav_materias);
-
+        bottomNavigation.setSelectedItemId(R.id.nav_novedades);
 
         bottomNavigation.setOnItemSelectedListener(item -> {
-
             int id = item.getItemId();
 
-
             if (id == R.id.nav_inicio) {
-
-                startActivity(
-                        new Intent(this, HomeActivity.class)
-                );
-
+                startActivity(new Intent(this, HomeActivity.class));
                 finish();
-
                 return true;
             }
-
 
             if (id == R.id.nav_materias) {
-
+                startActivity(new Intent(this, MateriasActivity.class));
+                finish();
                 return true;
-
             }
-
 
             if (id == R.id.nav_grupos) {
-
-                startActivity(
-                        new Intent(this, GruposActivity.class)
-                );
-
+                startActivity(new Intent(this, GruposActivity.class));
                 finish();
-
                 return true;
             }
-
 
             if (id == R.id.nav_novedades) {
-
-                startActivity(
-                        new Intent(this, NovedadesActivity.class)
-                );
-
-                finish();
-
                 return true;
             }
-
 
             if (id == R.id.nav_perfil) {
-
-                startActivity(
-                        new Intent(this, PerfilActivity.class)
-                );
-
+                startActivity(new Intent(this, PerfilActivity.class));
                 finish();
-
                 return true;
             }
 
-
             if (id == R.id.nav_mas) {
-
-
                 PopupMenu popup = new PopupMenu(
                         NovedadesActivity.this,
                         bottomNavigation,
                         Gravity.END
                 );
-
 
                 popup.getMenuInflater()
                         .inflate(
@@ -209,59 +286,25 @@ public class NovedadesActivity extends AppCompatActivity {
                                 popup.getMenu()
                         );
 
-
                 popup.setOnMenuItemClickListener(subItem -> {
-
-
-                    if (subItem.getItemId() == R.id.nav_novedades) {
-
-                        startActivity(
-                                new Intent(
-                                        this,
-                                        NovedadesActivity.class
-                                )
-                        );
-
-                        return true;
-                    }
-
-
                     if (subItem.getItemId() == R.id.nav_calendario) {
-
-                        startActivity(
-                                new Intent(
-                                        this,
-                                        CalendarioActivity.class
-                                )
-                        );
-
+                        startActivity(new Intent(this, CalendarioActivity.class));
                         return true;
                     }
-
 
                     if (subItem.getItemId() == R.id.nav_contacto) {
-
-                        startActivity(
-                                new Intent(
-                                        this,
-                                        ContactoActivity.class
-                                )
-                        );
-
+                        startActivity(new Intent(this, ContactoActivity.class));
                         return true;
                     }
+
                     return false;
                 });
 
                 popup.show();
-
                 return true;
             }
-
 
             return false;
         });
     }
-
-
 }
