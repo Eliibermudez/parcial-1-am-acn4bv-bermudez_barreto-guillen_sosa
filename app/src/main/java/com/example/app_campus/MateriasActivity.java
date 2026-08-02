@@ -253,7 +253,7 @@ public class MateriasActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (id == R.id.nav_chat) {
+            if (id == R.id.nav_novedades) {
                 Intent intent = new Intent(MateriasActivity.this, NovedadesActivity.class);
                 startActivity(intent);
                 return true;

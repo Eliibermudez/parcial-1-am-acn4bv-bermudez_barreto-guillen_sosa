@@ -164,5 +164,6 @@
     <string name="comision_editar_perfil">Comisión</string>
     <string name="turno_editar_perfil">Turno</string>
     <string name="contacto">Contacto</string>
+    <string name="mas">Más</string>
 
 </resources>

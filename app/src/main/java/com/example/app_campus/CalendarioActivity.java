@@ -64,7 +64,7 @@ public class CalendarioActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (id == R.id.nav_chat) {
+            if (id == R.id.nav_novedades) {
                 startActivity(new Intent(this, NovedadesActivity.class));
                 finish();
                 return true;

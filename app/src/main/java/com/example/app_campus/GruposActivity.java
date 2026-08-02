@@ -116,7 +116,7 @@ public class GruposActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (itemId == R.id.nav_chat) {
+            if (itemId == R.id.nav_novedades) {
                 startActivity(new Intent(GruposActivity.this, NovedadesActivity.class));
                 return true;
             }

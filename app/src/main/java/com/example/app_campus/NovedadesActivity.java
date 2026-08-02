@@ -124,7 +124,7 @@ public class NovedadesActivity extends AppCompatActivity {
     }
 
     private void configurarNavbar(BottomNavigationView bottomNavigation) {
-        bottomNavigation.setSelectedItemId(R.id.nav_chat);
+        bottomNavigation.setSelectedItemId(R.id.nav_novedades);
 
         bottomNavigation.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
@@ -153,7 +153,7 @@ public class NovedadesActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (itemId == R.id.nav_chat) {
+            if (itemId == R.id.nav_novedades) {
                 return true;
             }
 
