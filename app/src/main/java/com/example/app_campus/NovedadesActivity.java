@@ -130,7 +130,7 @@ public class NovedadesActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
 
-        bottomNavigation.setSelectedItemId(R.id.nav_mas);
+        bottomNavigation.setSelectedItemId(R.id.nav_materias);
 
 
         bottomNavigation.setOnItemSelectedListener(item -> {
@@ -152,13 +152,8 @@ public class NovedadesActivity extends AppCompatActivity {
 
             if (id == R.id.nav_materias) {
 
-                startActivity(
-                        new Intent(this, MateriasActivity.class)
-                );
-
-                finish();
-
                 return true;
+
             }
 
 
@@ -200,30 +195,61 @@ public class NovedadesActivity extends AppCompatActivity {
 
             if (id == R.id.nav_mas) {
 
+
                 PopupMenu popup = new PopupMenu(
                         NovedadesActivity.this,
                         bottomNavigation,
                         Gravity.END
                 );
 
-                popup.getMenuInflater().inflate(R.menu.menu_mas, popup.getMenu());
+
+                popup.getMenuInflater()
+                        .inflate(
+                                R.menu.menu_mas,
+                                popup.getMenu()
+                        );
+
 
                 popup.setOnMenuItemClickListener(subItem -> {
 
+
                     if (subItem.getItemId() == R.id.nav_novedades) {
+
+                        startActivity(
+                                new Intent(
+                                        this,
+                                        NovedadesActivity.class
+                                )
+                        );
+
                         return true;
                     }
+
 
                     if (subItem.getItemId() == R.id.nav_calendario) {
-                        startActivity(new Intent(this, CalendarioActivity.class));
+
+                        startActivity(
+                                new Intent(
+                                        this,
+                                        CalendarioActivity.class
+                                )
+                        );
+
                         return true;
                     }
+
 
                     if (subItem.getItemId() == R.id.nav_contacto) {
-                        startActivity(new Intent(this, ContactoActivity.class));
+
+                        startActivity(
+                                new Intent(
+                                        this,
+                                        ContactoActivity.class
+                                )
+                        );
+
                         return true;
                     }
-
                     return false;
                 });
 
