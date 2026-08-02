@@ -36,8 +36,6 @@ public class PerfilActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
-        firebaseAuth = FirebaseAuth.getInstance();
-
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
 
         btnCerrarSesion.setOnClickListener(v -> cerrarSesion());
