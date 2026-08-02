@@ -163,7 +163,14 @@
     <string name="carrera_editar_perfil">Carrera</string>
     <string name="comision_editar_perfil">Comisión</string>
     <string name="turno_editar_perfil">Turno</string>
+
+    <!-- Contacto -->
+
     <string name="contacto">Contacto</string>
+    <string name="universidad_davinci">Universidad Davinci</string>
+    <string name="direccion_universidad">Av. Corrientes 2037, C1001 Cdad. Autónoma de Buenos Aires</string>
+
+    <!-- Menu más -->
     <string name="mas">Más</string>
 
 </resources>

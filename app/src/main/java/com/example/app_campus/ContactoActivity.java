@@ -29,8 +29,6 @@ public class ContactoActivity extends FragmentActivity implements OnMapReadyCall
         tvDireccion = findViewById(R.id.tvDireccion);
         btnIr = findViewById(R.id.btnIr);
 
-        tvLugar.setText("Campus Estudiantil");
-        tvDireccion.setText("Av. Corrientes ");
 
         btnIr.setOnClickListener(v -> {
             String uri = "google.navigation:q=" + ubicacion.latitude + "," + ubicacion.longitude;
