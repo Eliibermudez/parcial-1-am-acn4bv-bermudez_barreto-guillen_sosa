@@ -16,7 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class CalendarioActivity extends AppCompatActivity {
+
+    private ImageView btnCerrarSesion;
 
     LinearLayout container;
 
@@ -28,6 +31,9 @@ public class CalendarioActivity extends AppCompatActivity {
         // botón volver
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
+
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnCerrarSesion.setOnClickListener(v -> AuthUtils.cerrarSesion(this));
 
         // contenedor
         container = findViewById(R.id.containerParciales);

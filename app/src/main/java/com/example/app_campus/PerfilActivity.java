@@ -30,7 +30,7 @@ public class PerfilActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
 
-    private LinearLayout btnCerrarSesion;
+    private ImageView btnCerrarSesion;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -47,6 +47,9 @@ public class PerfilActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             finish();
         });
+
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnCerrarSesion.setOnClickListener(v -> AuthUtils.cerrarSesion(this));
 
         initViews();
         initListeners();
@@ -244,15 +247,5 @@ public class PerfilActivity extends AppCompatActivity {
         });
 
         popup.show();
-    }
-
-    private void cerrarSesion() {
-        firebaseAuth.signOut();
-
-        Intent intent = new Intent(PerfilActivity.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-
-        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
     }
 }

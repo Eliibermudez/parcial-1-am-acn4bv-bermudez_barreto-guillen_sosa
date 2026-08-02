@@ -46,6 +46,8 @@ public class NovedadesActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
 
+    private ImageView btnCerrarSesion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,9 @@ public class NovedadesActivity extends AppCompatActivity {
         cargarNovedadesDesdeFirestore();
         actualizarResumenNovedades();
         configurarBottomNav();
+
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnCerrarSesion.setOnClickListener(v -> AuthUtils.cerrarSesion(this));
     }
 
     private void inicializarVistas() {
