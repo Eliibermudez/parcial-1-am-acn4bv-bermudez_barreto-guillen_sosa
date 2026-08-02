@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="btnAccesoPerfil" type="id">acceso_perfil</item>
-    <item name="btnAccesoContacto" type="id">acceso_contacto</item>
+    <item name="btnAccesoPerfil" type="id" />
+    <item name="btnAccesoContacto" type="id" />
 </resources>

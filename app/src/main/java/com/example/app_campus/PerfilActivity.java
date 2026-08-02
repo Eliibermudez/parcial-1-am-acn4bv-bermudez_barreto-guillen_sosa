@@ -119,7 +119,7 @@ public class PerfilActivity extends AppCompatActivity {
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
                         mostrarDatosFirestore(documentSnapshot);
-                        Toast.makeText(this, "Datos cargados desde Firestore", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Datos cargados con éxito", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(this, "No se encontró el perfil del usuario", Toast.LENGTH_SHORT).show();
                     }

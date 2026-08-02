@@ -58,14 +58,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Este ImageView queda oculto para no romper el Java si todavía lo referencia -->
-            <ImageView
-                android:id="@+id/imgBannerNovedades"
-                android:layout_width="1dp"
-                android:layout_height="1dp"
-                android:visibility="gone"
-                android:contentDescription="@string/banner_novedades_imagen" />
-
             <TextView
                 android:id="@+id/txtNovedadesRecientes"
                 android:layout_width="match_parent"
