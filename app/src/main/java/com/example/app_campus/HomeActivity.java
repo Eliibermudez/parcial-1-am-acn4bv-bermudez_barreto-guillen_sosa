@@ -14,8 +14,6 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout btnAccesoGrupos;
     private LinearLayout btnAccesoCalendario;
     private LinearLayout btnAccesoNovedades;
-    private LinearLayout btnAccesoPerfil;
-    private LinearLayout btnAccesoContacto;
 
     private BottomNavigationView bottomNavigation;
 
@@ -34,61 +32,33 @@ public class HomeActivity extends AppCompatActivity {
         btnAccesoGrupos = findViewById(R.id.btnAccesoGrupos);
         btnAccesoCalendario = findViewById(R.id.btnAccesoCalendario);
         btnAccesoNovedades = findViewById(R.id.btnAccesoNovedades);
-        btnAccesoPerfil = findViewById(R.id.btnAccesoPerfil);
-        btnAccesoContacto = findViewById(R.id.btnAccesoContacto);
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
     }
 
     private void configurarAccesosRapidos() {
-        if (btnAccesoMaterias != null) {
-            btnAccesoMaterias.setOnClickListener(v -> {
-                Intent intent = new Intent(HomeActivity.this, MateriasActivity.class);
-                startActivity(intent);
-            });
-        }
+        btnAccesoMaterias.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, MateriasActivity.class);
+            startActivity(intent);
+        });
 
-        if (btnAccesoGrupos != null) {
-            btnAccesoGrupos.setOnClickListener(v -> {
-                Intent intent = new Intent(HomeActivity.this, GruposActivity.class);
-                startActivity(intent);
-            });
-        }
+        btnAccesoGrupos.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, GruposActivity.class);
+            startActivity(intent);
+        });
 
-        if (btnAccesoCalendario != null) {
-            btnAccesoCalendario.setOnClickListener(v -> {
-                Intent intent = new Intent(HomeActivity.this, CalendarioActivity.class);
-                startActivity(intent);
-            });
-        }
+        btnAccesoCalendario.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, CalendarioActivity.class);
+            startActivity(intent);
+        });
 
-        if (btnAccesoNovedades != null) {
-            btnAccesoNovedades.setOnClickListener(v -> {
-                Intent intent = new Intent(HomeActivity.this, NovedadesActivity.class);
-                startActivity(intent);
-            });
-        }
-
-        if (btnAccesoPerfil != null) {
-            btnAccesoPerfil.setOnClickListener(v -> {
-                Intent intent = new Intent(HomeActivity.this, PerfilActivity.class);
-                startActivity(intent);
-            });
-        }
-
-        if (btnAccesoContacto != null) {
-            btnAccesoContacto.setOnClickListener(v -> {
-                Intent intent = new Intent(HomeActivity.this, ContactoActivity.class);
-                startActivity(intent);
-            });
-        }
+        btnAccesoNovedades.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, NovedadesActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void configurarBottomNavigation() {
-        if (bottomNavigation == null) {
-            return;
-        }
-
         bottomNavigation.setSelectedItemId(R.id.nav_inicio);
 
         bottomNavigation.setOnItemSelectedListener(item -> {
