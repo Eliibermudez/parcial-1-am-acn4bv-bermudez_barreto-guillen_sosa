@@ -18,6 +18,10 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout btnAccesoCalendario;
     private LinearLayout btnAccesoNovedades;
 
+    private LinearLayout btnAccesoPerfil;
+
+    private LinearLayout btnAccesoContacto;
+
     private BottomNavigationView bottomNavigation;
 
     @Override
@@ -35,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
         btnAccesoGrupos = findViewById(R.id.btnAccesoGrupos);
         btnAccesoCalendario = findViewById(R.id.btnAccesoCalendario);
         btnAccesoNovedades = findViewById(R.id.btnAccesoNovedades);
+        btnAccesoPerfil = findViewById(R.id.btnAccesoPerfil);
+        btnAccesoContacto = findViewById(R.id.btnAccesoContacto);
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
     }
@@ -57,6 +63,16 @@ public class HomeActivity extends AppCompatActivity {
 
         btnAccesoNovedades.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, NovedadesActivity.class);
+            startActivity(intent);
+        });
+
+        btnAccesoPerfil.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, PerfilActivity.class);
+            startActivity(intent);
+        });
+
+        btnAccesoContacto.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ContactoActivity.class);
             startActivity(intent);
         });
     }

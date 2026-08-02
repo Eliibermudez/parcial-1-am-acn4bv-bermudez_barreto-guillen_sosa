@@ -2,8 +2,11 @@ package com.example.app_campus;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.LinearLayout;
@@ -201,20 +204,47 @@ public class PerfilActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (id == R.id.nav_calendario) {
-                startActivity(new Intent(this, CalendarioActivity.class));
-                finish();
+            if (id == R.id.nav_perfil) {
                 return true;
             }
+
+            if (id == R.id.nav_mas) {
+                mostrarPopupMenu(bottomNavigation);
+                return false;
+            }
+
+            return false;
+        });
+    }
+
+    private void mostrarPopupMenu(View anchor) {
+
+        PopupMenu popup = new PopupMenu(this, anchor, Gravity.END);
+        popup.getMenuInflater().inflate(R.menu.menu_mas, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(item -> {
+
+            int id = item.getItemId();
 
             if (id == R.id.nav_novedades) {
                 startActivity(new Intent(this, NovedadesActivity.class));
-                finish();
                 return true;
             }
 
-            return id == R.id.nav_perfil;
+            if (id == R.id.nav_calendario) {
+                startActivity(new Intent(this, CalendarioActivity.class));
+                return true;
+            }
+
+            if (id == R.id.nav_contacto) {
+                startActivity(new Intent(this, ContactoActivity.class));
+                return true;
+            }
+
+            return false;
         });
+
+        popup.show();
     }
 
     private void cerrarSesion() {

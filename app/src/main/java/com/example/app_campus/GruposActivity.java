@@ -113,25 +113,48 @@ public class GruposActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (itemId == R.id.nav_calendario) {
-                startActivity(new Intent(GruposActivity.this, CalendarioActivity.class));
-                finish();
-                return true;
-            }
-
-            if (itemId == R.id.nav_novedades) {
-                startActivity(new Intent(GruposActivity.this, NovedadesActivity.class));
-                return true;
-            }
-
             if (itemId == R.id.nav_perfil) {
                 startActivity(new Intent(GruposActivity.this, PerfilActivity.class));
                 finish();
                 return true;
             }
+            if (itemId == R.id.nav_mas) {
+                mostrarPopupMenu(bottomNavigation);
+                return false;
+            }
 
             return false;
         });
+    }
+
+    private void mostrarPopupMenu(View anchor) {
+
+        PopupMenu popup = new PopupMenu(this, anchor, Gravity.END);
+        popup.getMenuInflater().inflate(R.menu.menu_mas, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(item -> {
+
+            int id = item.getItemId();
+
+            if (id == R.id.nav_novedades) {
+                startActivity(new Intent(this, NovedadesActivity.class));
+                return true;
+            }
+
+            if (id == R.id.nav_calendario) {
+                startActivity(new Intent(this, CalendarioActivity.class));
+                return true;
+            }
+
+            if (id == R.id.nav_contacto) {
+                startActivity(new Intent(this, ContactoActivity.class));
+                return true;
+            }
+
+            return false;
+        });
+
+        popup.show();
     }
 
     private void configurarAccionGrupo(TextView estadoGrupo, TextView btnUnirseGrupo, TextView detalleGrupo, int integrantesIniciales, LinearLayout cardGrupo) {

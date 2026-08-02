@@ -3,6 +3,7 @@ package com.example.app_campus;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -250,27 +251,49 @@ public class MateriasActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (id == R.id.nav_calendario) {
-                startActivity(new Intent(this, CalendarioActivity.class));
-                finish();
-                return true;
-            }
-
-            if (id == R.id.nav_novedades) {
-                Intent intent = new Intent(MateriasActivity.this, NovedadesActivity.class);
-                startActivity(intent);
-                return true;
-            }
-
-
             if (id == R.id.nav_perfil) {
                 startActivity(new Intent(this, PerfilActivity.class));
                 finish();
                 return true;
             }
 
+            if (id == R.id.nav_mas) {
+                mostrarPopupMenu(bottomNavigation);
+                return false;
+            }
+
             return false;
         });
+    }
+
+    private void mostrarPopupMenu(View anchor) {
+
+        PopupMenu popup = new PopupMenu(this, anchor, Gravity.END);
+        popup.getMenuInflater().inflate(R.menu.menu_mas, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(item -> {
+
+            int id = item.getItemId();
+
+            if (id == R.id.nav_novedades) {
+                startActivity(new Intent(this, NovedadesActivity.class));
+                return true;
+            }
+
+            if (id == R.id.nav_calendario) {
+                startActivity(new Intent(this, CalendarioActivity.class));
+                return true;
+            }
+
+            if (id == R.id.nav_contacto) {
+                startActivity(new Intent(this, ContactoActivity.class));
+                return true;
+            }
+
+            return false;
+        });
+
+        popup.show();
     }
 
     private int dp(int value) {
