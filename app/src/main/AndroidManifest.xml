@@ -23,6 +23,9 @@
         <activity
             android:name=".GruposActivity"
             android:exported="false" />
+
+        <activity android:name=".ContactoActivity"
+            android:exported="false"/>
         <activity
             android:name=".MateriasActivity"
             android:exported="false" />
@@ -49,7 +52,9 @@
             </intent-filter>
         </activity>
 
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC_chcWySJNcWPYOdvz9DUceh3koKlrAs0"/>
     </application>
 
 </manifest>

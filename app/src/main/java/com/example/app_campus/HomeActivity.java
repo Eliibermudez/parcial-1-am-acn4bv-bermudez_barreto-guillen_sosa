@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.view.Gravity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -102,30 +103,63 @@ public class HomeActivity extends AppCompatActivity {
 
             if (itemId == R.id.nav_mas) {
 
-                View view = findViewById(R.id.bottomNavigation);
+                PopupMenu popup = new PopupMenu(
+                        HomeActivity.this,
+                        bottomNavigation,
+                        Gravity.END
+                );
 
-                PopupMenu popup = new PopupMenu(HomeActivity.this, view);
-                popup.getMenuInflater().inflate(R.menu.menu_mas, popup.getMenu());
+                popup.getMenuInflater()
+                        .inflate(R.menu.menu_mas, popup.getMenu());
+
 
                 popup.setOnMenuItemClickListener(subItem -> {
 
-                    if (subItem.getItemId() == R.id.nav_calendario) {
-                        Intent intent = new Intent(HomeActivity.this, CalendarioActivity.class);
+                    int id = subItem.getItemId();
+
+
+                    if (id == R.id.nav_novedades) {
+
+                        Intent intent = new Intent(
+                                HomeActivity.this,
+                                NovedadesActivity.class
+                        );
+
                         startActivity(intent);
                         return true;
                     }
 
-                    if (subItem.getItemId() == R.id.nav_contacto) {
 
-                        Intent intent = new Intent(HomeActivity.this, ContactoActivity.class);
+                    if (id == R.id.nav_calendario) {
+
+                        Intent intent = new Intent(
+                                HomeActivity.this,
+                                CalendarioActivity.class
+                        );
+
                         startActivity(intent);
                         return true;
                     }
+
+
+                    if (id == R.id.nav_contacto) {
+
+                        Intent intent = new Intent(
+                                HomeActivity.this,
+                                ContactoActivity.class
+                        );
+
+                        startActivity(intent);
+                        return true;
+                    }
+
 
                     return false;
                 });
 
+
                 popup.show();
+
                 return true;
             }
 
