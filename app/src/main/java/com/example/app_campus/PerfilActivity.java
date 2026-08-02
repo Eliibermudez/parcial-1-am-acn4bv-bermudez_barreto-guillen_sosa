@@ -1,5 +1,6 @@
 package com.example.app_campus;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -31,6 +32,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     private LinearLayout btnCerrarSesion;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +41,6 @@ public class PerfilActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
-        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
-
-        btnCerrarSesion.setOnClickListener(v -> cerrarSesion());
 
         ImageView btnBack = findViewById(R.id.btnBack);
 

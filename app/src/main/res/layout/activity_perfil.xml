@@ -35,6 +35,19 @@
             android:textStyle="bold"
             android:layout_centerInParent="true"/>
 
+        <ImageView
+            android:id="@+id/btnLogout"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_logout"
+            android:contentDescription="@string/cerrar_sesion"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@color/textWhite" />
+
     </RelativeLayout>
 
     <ScrollView
@@ -156,36 +169,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_button"/>
 
-                <LinearLayout
-                    android:id="@+id/btnCerrarSesion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/space_md"
-                    android:layout_marginBottom="@dimen/space_md"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
 
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_marginEnd="6dp"
-                        android:contentDescription="Cerrar sesión"
-                        android:src="@drawable/ic_logout"
-                        app:tint="@color/colorDanger" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Cerrar sesión"
-                        android:textColor="@color/textSecondary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
 
             </LinearLayout>
 

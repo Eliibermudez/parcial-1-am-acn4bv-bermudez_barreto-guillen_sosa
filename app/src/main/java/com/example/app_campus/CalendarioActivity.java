@@ -46,7 +46,7 @@ public class CalendarioActivity extends AppCompatActivity {
 
         // navegación
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
-        bottomNavigation.setSelectedItemId(R.id.nav_calendario);
+        bottomNavigation.setSelectedItemId(R.id.nav_mas);
 
         bottomNavigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -62,32 +62,55 @@ public class CalendarioActivity extends AppCompatActivity {
                 finish();
                 return true;
             }
-
-            if (id == R.id.nav_calendario) {
-                return true;
-            }
-
-            if (id == R.id.nav_novedades) {
-                startActivity(new Intent(this, NovedadesActivity.class));
-                finish();
-                return true;
-            }
-
-            if (id == R.id.nav_grupos) {
-                startActivity(new Intent(this, GruposActivity.class));
-                finish();
-                return true;
-            }
-
             if (id == R.id.nav_perfil) {
-                startActivity(new Intent(this, PerfilActivity.class));
+
+                startActivity(
+                        new Intent(this, PerfilActivity.class)
+                );
+
                 finish();
+
                 return true;
             }
 
 
+            if (id == R.id.nav_mas) {
+
+                PopupMenu popup = new PopupMenu(
+                        CalendarioActivity.this,
+                        bottomNavigation,
+                        Gravity.END
+                );
+
+                popup.getMenuInflater().inflate(R.menu.menu_mas, popup.getMenu());
+
+                popup.setOnMenuItemClickListener(subItem -> {
+
+                    if (subItem.getItemId() == R.id.nav_calendario) {
+                        startActivity(new Intent(this, CalendarioActivity.class));
+                        return true;
+                    }
+
+                    if (subItem.getItemId() == R.id.nav_contacto) {
+                        startActivity(new Intent(this, ContactoActivity.class));
+                        return true;
+                    }
+
+                    if (subItem.getItemId() == R.id.nav_novedades) {
+                        startActivity(new Intent(this, NovedadesActivity.class));
+                        return true;
+                    }
+
+                    return false;
+                });
+
+                popup.show();
+
+                return true;
+            }
             return false;
         });
+
     }
 
     // render dinámico

@@ -3,9 +3,11 @@ package com.example.app_campus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,12 +23,17 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout btnAccesoCalendario;
     private LinearLayout btnAccesoNovedades;
 
+    private LinearLayout btnAccesoPerfil;
+    private LinearLayout btnAccesoContacto;
+
     private TextView txtBienvenida;
 
     private BottomNavigationView bottomNavigation;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
+
+    private ImageView btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +56,23 @@ public class HomeActivity extends AppCompatActivity {
         btnAccesoGrupos = findViewById(R.id.btnAccesoGrupos);
         btnAccesoCalendario = findViewById(R.id.btnAccesoCalendario);
         btnAccesoNovedades = findViewById(R.id.btnAccesoNovedades);
+        btnAccesoPerfil = findViewById(R.id.btnAccesoPerfil);
+        btnAccesoContacto = findViewById(R.id.btnAccesoContacto);
+        btnLogout = findViewById(R.id.btnLogout);
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
+
+        btnLogout.setOnClickListener(v -> cerrarSesion());
+    }
+
+    private void cerrarSesion() {
+        firebaseAuth.signOut();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
     }
 
     private void cargarNombreUsuario() {
@@ -110,6 +132,16 @@ public class HomeActivity extends AppCompatActivity {
 
         btnAccesoNovedades.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, NovedadesActivity.class);
+            startActivity(intent);
+        });
+
+        btnAccesoPerfil.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, PerfilActivity.class);
+            startActivity(intent);
+        });
+
+        btnAccesoContacto.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ContactoActivity.class);
             startActivity(intent);
         });
     }

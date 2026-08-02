@@ -34,6 +34,12 @@
     <string name="home_resumen_titulo">Resumen de actividad</string>
     <string name="home_resumen_detalle">Tenés 3 novedades pendientes, 1 grupo activo y una entrega próxima.</string>
 
+    <string name="home_perfil">Perfil</string>
+    <string name="home_perfil_texto">Ver y editar tu información</string>
+    <string name="home_contacto">Contacto</string>
+    <string name="home_contacto_texto">Ubicación y cómo llegar</string>
+
+
     <!-- Accesos / menú -->
     <string name="mis_materias">Mis materias</string>
     <string name="grupos_trabajo">Grupos de trabajo</string>
@@ -172,5 +178,6 @@
 
     <!-- Menu más -->
     <string name="mas">Más</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
 
 </resources>
