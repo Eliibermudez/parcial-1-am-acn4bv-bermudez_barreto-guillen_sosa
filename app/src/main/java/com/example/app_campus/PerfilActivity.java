@@ -205,11 +205,6 @@ public class PerfilActivity extends AppCompatActivity {
                 finish();
                 return true;
             }
-            if (id == R.id.nav_contacto) {
-                startActivity(new Intent(this, ContactoActivity.class));
-                finish();
-                return true;
-            }
 
             return id == R.id.nav_perfil;
         });

@@ -3,7 +3,6 @@ package com.example.app_campus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,23 +15,28 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout btnAccesoCalendario;
     private LinearLayout btnAccesoNovedades;
 
-    private LinearLayout btnAccesoPerfil;
-
-    private LinearLayout btnAccesoContacto;
+    private BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        inicializarVistas();
+        configurarAccesosRapidos();
+        configurarBottomNavigation();
+    }
+
+    private void inicializarVistas() {
         btnAccesoMaterias = findViewById(R.id.btnAccesoMaterias);
         btnAccesoGrupos = findViewById(R.id.btnAccesoGrupos);
         btnAccesoCalendario = findViewById(R.id.btnAccesoCalendario);
         btnAccesoNovedades = findViewById(R.id.btnAccesoNovedades);
 
-        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
-        bottomNavigation.setSelectedItemId(R.id.nav_inicio);
+        bottomNavigation = findViewById(R.id.bottomNavigation);
+    }
 
+    private void configurarAccesosRapidos() {
         btnAccesoMaterias.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MateriasActivity.class);
             startActivity(intent);
@@ -52,11 +56,10 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, NovedadesActivity.class);
             startActivity(intent);
         });
+    }
 
-        btnAccesoContacto.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ContactoActivity.class);
-            startActivity(intent);
-        });
+    private void configurarBottomNavigation() {
+        bottomNavigation.setSelectedItemId(R.id.nav_inicio);
 
         bottomNavigation.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();

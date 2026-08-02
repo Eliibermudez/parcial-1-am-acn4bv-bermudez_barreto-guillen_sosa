@@ -29,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
         btnIngresar = findViewById(R.id.btnIngresar);
+        txtIrRegistro = findViewById(R.id.txtIrRegistro);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
         btnIngresar.setOnClickListener(v -> validarLogin());
-        txtIrRegistro = findViewById(R.id.txtIrRegistro);
 
         txtIrRegistro.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
