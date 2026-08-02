@@ -121,12 +121,6 @@ public class GruposActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (itemId == R.id.nav_contacto) {
-                startActivity(new Intent(this, ContactoActivity.class));
-                finish();
-                return true;
-            }
-
             if (itemId == R.id.nav_perfil) {
                 startActivity(new Intent(GruposActivity.this, PerfilActivity.class));
                 finish();

@@ -157,12 +157,6 @@ public class NovedadesActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (itemId == R.id.nav_contacto) {
-                startActivity(new Intent(this, ContactoActivity.class));
-                finish();
-                return true;
-            }
-
             if (itemId == R.id.nav_perfil) {
                 startActivity(new Intent(NovedadesActivity.this, PerfilActivity.class));
                 finish();

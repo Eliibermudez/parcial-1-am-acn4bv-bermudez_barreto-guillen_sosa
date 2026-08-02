@@ -259,11 +259,6 @@ public class MateriasActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (id == R.id.nav_contacto) {
-                startActivity(new Intent(this, ContactoActivity.class));
-                finish();
-                return true;
-            }
 
             if (id == R.id.nav_perfil) {
                 startActivity(new Intent(this, PerfilActivity.class));
