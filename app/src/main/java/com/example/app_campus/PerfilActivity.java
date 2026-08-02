@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,6 +26,8 @@ public class PerfilActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
 
+    private LinearLayout btnCerrarSesion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,12 @@ public class PerfilActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+
+        btnCerrarSesion.setOnClickListener(v -> cerrarSesion());
 
         ImageView btnBack = findViewById(R.id.btnBack);
 
@@ -208,5 +217,15 @@ public class PerfilActivity extends AppCompatActivity {
 
             return id == R.id.nav_perfil;
         });
+    }
+
+    private void cerrarSesion() {
+        firebaseAuth.signOut();
+
+        Intent intent = new Intent(PerfilActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
     }
 }
