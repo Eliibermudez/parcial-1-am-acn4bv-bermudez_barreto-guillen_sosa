@@ -6,6 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.widget.PopupMenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -54,7 +57,7 @@ public class NovedadesActivity extends AppCompatActivity {
         configurarBotonLeida(btnLeidaNovedad3, 3);
 
         actualizarResumenNovedades();
-        configurarNavbar(bottomNavigation);
+        configurarBottomNav();
     }
 
     private void configurarBotonLeida(TextView boton, int numeroNovedad) {
@@ -123,47 +126,142 @@ public class NovedadesActivity extends AppCompatActivity {
         }
     }
 
-    private void configurarNavbar(BottomNavigationView bottomNavigation) {
-        bottomNavigation.setSelectedItemId(R.id.nav_chat);
+    private void configurarBottomNav() {
+
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+
+        bottomNavigation.setSelectedItemId(R.id.nav_materias);
+
 
         bottomNavigation.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
 
-            if (itemId == R.id.nav_inicio) {
-                Intent intent = new Intent(NovedadesActivity.this, HomeActivity.class);
-                startActivity(intent);
-                return true;
-            }
+            int id = item.getItemId();
 
-            if (itemId == R.id.nav_materias) {
-                Intent intent = new Intent(NovedadesActivity.this, MateriasActivity.class);
-                startActivity(intent);
-                return true;
-            }
 
-            if (itemId == R.id.nav_grupos) {
-                Intent intent = new Intent(NovedadesActivity.this, GruposActivity.class);
-                startActivity(intent);
-                return true;
-            }
+            if (id == R.id.nav_inicio) {
 
-            if (itemId == R.id.nav_calendario) {
-                startActivity(new Intent(NovedadesActivity.this, CalendarioActivity.class));
+                startActivity(
+                        new Intent(this, HomeActivity.class)
+                );
+
                 finish();
+
                 return true;
             }
 
-            if (itemId == R.id.nav_chat) {
+
+            if (id == R.id.nav_materias) {
+
                 return true;
+
             }
 
-            if (itemId == R.id.nav_perfil) {
-                startActivity(new Intent(NovedadesActivity.this, PerfilActivity.class));
+
+            if (id == R.id.nav_grupos) {
+
+                startActivity(
+                        new Intent(this, GruposActivity.class)
+                );
+
                 finish();
+
                 return true;
             }
+
+
+            if (id == R.id.nav_novedades) {
+
+                startActivity(
+                        new Intent(this, NovedadesActivity.class)
+                );
+
+                finish();
+
+                return true;
+            }
+
+
+            if (id == R.id.nav_perfil) {
+
+                startActivity(
+                        new Intent(this, PerfilActivity.class)
+                );
+
+                finish();
+
+                return true;
+            }
+
+
+            if (id == R.id.nav_mas) {
+
+
+                PopupMenu popup = new PopupMenu(
+                        NovedadesActivity.this,
+                        bottomNavigation,
+                        Gravity.END
+                );
+
+
+                popup.getMenuInflater()
+                        .inflate(
+                                R.menu.menu_mas,
+                                popup.getMenu()
+                        );
+
+
+                popup.setOnMenuItemClickListener(subItem -> {
+
+
+                    if (subItem.getItemId() == R.id.nav_novedades) {
+
+                        startActivity(
+                                new Intent(
+                                        this,
+                                        NovedadesActivity.class
+                                )
+                        );
+
+                        return true;
+                    }
+
+
+                    if (subItem.getItemId() == R.id.nav_calendario) {
+
+                        startActivity(
+                                new Intent(
+                                        this,
+                                        CalendarioActivity.class
+                                )
+                        );
+
+                        return true;
+                    }
+
+
+                    if (subItem.getItemId() == R.id.nav_contacto) {
+
+                        startActivity(
+                                new Intent(
+                                        this,
+                                        ContactoActivity.class
+                                )
+                        );
+
+                        return true;
+                    }
+                    return false;
+                });
+
+                popup.show();
+
+                return true;
+            }
+
 
             return false;
         });
     }
+
+
 }

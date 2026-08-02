@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.widget.PopupMenu;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -116,7 +119,7 @@ public class GruposActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (itemId == R.id.nav_chat) {
+            if (itemId == R.id.nav_novedades) {
                 startActivity(new Intent(GruposActivity.this, NovedadesActivity.class));
                 return true;
             }

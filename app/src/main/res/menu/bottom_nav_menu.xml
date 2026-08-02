@@ -17,20 +17,13 @@
         android:title="@string/menu_grupos" />
 
     <item
-        android:id="@+id/nav_calendario"
-        android:icon="@drawable/ic_calendar"
-        android:title="@string/menu_calendario" />
-
-    <item
-        android:id="@+id/nav_chat"
-        android:icon="@drawable/ic_chat"
-        android:title="@string/menu_chat" />
-
-
-
-    <item
         android:id="@+id/nav_perfil"
         android:icon="@drawable/ic_person"
         android:title="@string/menu_perfil" />
+
+    <item
+        android:id="@+id/nav_mas"
+        android:icon="@drawable/ic_more"
+        android:title="@string/mas" />
 
 </menu>

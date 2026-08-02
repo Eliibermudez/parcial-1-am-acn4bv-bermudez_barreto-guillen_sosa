@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.widget.PopupMenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -64,7 +67,7 @@ public class CalendarioActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (id == R.id.nav_chat) {
+            if (id == R.id.nav_novedades) {
                 startActivity(new Intent(this, NovedadesActivity.class));
                 finish();
                 return true;
